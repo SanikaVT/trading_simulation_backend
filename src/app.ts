@@ -1,26 +1,59 @@
-import express, { Express } from "express";
+import express, { Application } from "express";
 import dotenv from "dotenv";
+import compression from "compression";
+import morgan from "morgan";
 import connect from "./connect";
-const router = require("./routes/routes");
+import Controller from "@/utils/interfaces/controller.interface";
+import ErrorMiddleware from "./middleware/error.middleware";
+import helmet from "helmet";
 const cors = require("cors");
-const { PORT, MONGODB_URL } = require("./config/config");
 dotenv.config();
 
-const app: Express = express();
+class App {
+  public express: Application;
+  public port: number;
+  public dbUrl: string;
+  constructor(controllers: Controller[], port: number, dbUrl: string) {
+    this.express = express();
+    this.port = port;
+    this.dbUrl = dbUrl;
+    this.initialiseDB();
+    this.initialiseMiddleware();
+    this.initialiseControllers(controllers);
+    this.initialiseErrorHandling();
+  }
 
-app.use(cors());
-// parse application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+  private initialiseMiddleware(): void {
+    this.express.use(helmet());
+    this.express.use(cors());
+    this.express.use(morgan("dev"));
+    // parse application/json
+    this.express.use(express.json());
+    // parse application/x-www-form-urlencoded
+    this.express.use(express.urlencoded({ extended: false }));
+    this.express.use(compression());
+  }
 
-// parse application/json
-app.use(express.json());
+  private initialiseControllers(controllers: Controller[]): void {
+    controllers.forEach((controller: Controller) => {
+      this.express.use("/api", controller.router);
+    });
+  }
 
-app.use(router);
+  private initialiseErrorHandling(): void {
+    this.express.use(ErrorMiddleware);
+  }
 
-const url: string = MONGODB_URL;
-connect({ url });
+  private initialiseDB(): void {
+    const url: string = this.dbUrl;
+    connect({ url });
+  }
 
-app.listen(PORT, () => {
-  console.log(`Express listening on port ${PORT}`);
-});
-module.exports = app;
+  public listen(): void {
+    this.express.listen(this.port, () => {
+      console.log(`Express listening on port ${this.port}`);
+    });
+  }
+}
+
+export default App;
