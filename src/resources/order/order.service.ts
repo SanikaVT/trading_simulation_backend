@@ -6,10 +6,19 @@ export default class OrderService {
 
   public async create(order: Order): Promise<Order> {
     try {
-      const post = await this.order.create(order);
-      return post;
+      const createdOrder = await this.order.create(order);
+      return createdOrder;
     } catch (err) {
-      throw new Error("Unable to create post");
+      throw new Error("Unable to create order.");
+    }
+  }
+
+  public async getOrders(): Promise<Order[]> {
+    try {
+      const orders = await this.order.find();
+      return orders;
+    } catch (err) {
+      throw new Error("Unable to get orders.");
     }
   }
 }

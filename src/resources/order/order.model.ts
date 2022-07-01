@@ -7,11 +7,19 @@ const OrderSchema = new Schema(
     symbol: { type: String, required: true },
     quantity: { type: Number, required: true },
     price: { type: Number, required: true },
-    timestamp: { type: String, required: true },
+    timestamp: { type: Date, required: true },
     status: { type: String, enum: ["Cancelled", "Pending", "Placed"] },
     orderType: { type: String, enum: ["Buy", "Sell"] },
   },
   { timestamps: true }
 );
+
+OrderSchema.set("toJSON", {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id;
+    delete returnedObject._id;
+    delete returnedObject.__v;
+  },
+});
 
 export default model<Order>("Order", OrderSchema);
