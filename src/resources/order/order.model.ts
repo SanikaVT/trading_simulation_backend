@@ -8,8 +8,8 @@ const OrderSchema = new Schema(
     quantity: { type: Number, required: true },
     price: { type: Number, required: true },
     timestamp: { type: String, required: true },
-    status: ["Cancelled", "Pending", "Placed"],
-    orderType: ["Buy", "Sell"],
+    status: { type: String, enum: ["Cancelled", "Pending", "Placed"] },
+    orderType: { type: String, enum: ["Buy", "Sell"] },
   },
   { timestamps: true }
 );
