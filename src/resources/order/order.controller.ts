@@ -3,6 +3,7 @@ import Controller from "../../utils/interfaces/controller.interface";
 import HttpException from "../../utils/exceptions/http.exception";
 import OrderService from "../../resources/order/order.service";
 import OrderModel from "../order/order.model";
+const rn = require("random-number");
 
 export default class OrderController implements Controller {
   public path = "/order";
@@ -23,20 +24,26 @@ export default class OrderController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { orderID, symbol, quantity, price, status, orderType } = req.body;
+      const { symbol, quantity, price, orderType } = req.body;
+      const options = {
+        min: 12345,
+        max: 20000,
+        integer: true,
+      };
       const order = new OrderModel();
-      order.orderID = orderID;
+      order.orderID = rn(options);
       order.symbol = symbol;
       order.quantity = quantity;
       order.price = price;
       order.timestamp = new Date();
-      order.status = status;
+      order.status = "Placed";
       order.orderType = orderType;
 
       const createdOrder = await this.OrderService.create(order);
 
-      res.sendStatus(201).send({ createdOrder });
+      res.sendStatus(201);
     } catch (error: any) {
+      console.log(error.message);
       //next(new HttpException(400, error.message));
     }
   };
