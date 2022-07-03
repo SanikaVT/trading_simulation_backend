@@ -12,21 +12,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const yearly_analytics_model_1 = __importDefault(require("./yearly_analytics.model"));
-class AnalyticsService {
+const express_1 = require("express");
+const analytics_service_1 = __importDefault(require("./analytics.service"));
+class HalfYearlyAnalyticsController {
     constructor() {
-        this.yearlyanalytics = yearly_analytics_model_1.default;
-    }
-    getAnalytics() {
-        return __awaiter(this, void 0, void 0, function* () {
+        this.path = "/halfyearlyanalytics";
+        this.router = (0, express_1.Router)();
+        this.AnalyticsService = new analytics_service_1.default();
+        this.getAnalytics = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const filtered_analytics = yield this.yearlyanalytics.find();
-                return filtered_analytics;
+                const analytics = yield this.AnalyticsService.getAnalytics();
+                res.send({ analytics });
             }
-            catch (err) {
-                throw new Error("Unable to get orders.");
+            catch (error) {
+                console.log(error.message);
+                //next(new HttpException(400, error.message));
             }
         });
+        this.initialiseRoutes();
+    }
+    initialiseRoutes() {
+        this.router.get(`${this.path}`, this.getAnalytics);
     }
 }
-exports.default = AnalyticsService;
+exports.default = HalfYearlyAnalyticsController;

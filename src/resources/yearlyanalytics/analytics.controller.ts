@@ -1,10 +1,10 @@
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
 import HttpException from "../../utils/exceptions/http.exception";
-import AnalyticsService from "../../resources/analytics/analytics.service";
-import AnalyticsModel from "../analytics/analytics.model";
+import AnalyticsService from "./analytics.service";
+import AnalyticsModel from "./yearly_analytics.model";
 
-export default class AnalyticsController implements Controller {
+export default class YearlyAnalyticsController implements Controller {
   public path = "/analytics";
   public router = Router();
   private AnalyticsService = new AnalyticsService();
@@ -22,10 +22,8 @@ export default class AnalyticsController implements Controller {
   ): Promise<Response | void> => {
     try {
       const analytics = await this.AnalyticsService.getAnalytics();
-      console.log(analytics)
       res.send({ analytics });
     } catch (error: any) {
-      console.log("Hi")
       console.log(error.message);
       //next(new HttpException(400, error.message));
     }
