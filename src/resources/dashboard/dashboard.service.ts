@@ -17,11 +17,14 @@ import stockModel from "./stock.model";
 
 export default class DashboardService {
   private stock = stockModel;
-  public async findAllRecommended(): Promise<Stock[]> {
-    return [];
+
+  public findAllRecommended() {
+    let stockList = this.stock.find();
+    return stockList;
   }
 
-  public async findAllFavorite(): Promise<Stock[]> {
-    return [];
+  public findAllFavorite() {
+    let stockList = this.stock.find({ isFavorite: true });
+    return stockList;
   }
 }

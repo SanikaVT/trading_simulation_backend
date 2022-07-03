@@ -4,7 +4,7 @@ import { Router, Request, Response, NextFunction } from "express";
 import Controller from "@/utils/interfaces/controller.interface";
 import HttpException from "@/utils/exceptions/http.exception";
 import DashboardService from "./dashboard.service";
-import stockModel from "./stock.model";
+
 const rn = require("random-number");
 
 export default class DashboardController implements Controller {
