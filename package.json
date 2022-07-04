@@ -28,7 +28,8 @@
     "mongoose-unique-validator": "^3.1.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.18",
-    "random-number": "^0.0.9"
+    "random-number": "^0.0.9",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/compression": "^1.7.2",
