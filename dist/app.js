@@ -8,8 +8,8 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const compression_1 = __importDefault(require("compression"));
 const morgan_1 = __importDefault(require("morgan"));
 const connect_1 = __importDefault(require("./connect"));
-const error_middleware_1 = __importDefault(require("./middleware/error.middleware"));
 const helmet_1 = __importDefault(require("helmet"));
+const path_1 = __importDefault(require("path"));
 const cors = require("cors");
 dotenv_1.default.config();
 class App {
@@ -21,6 +21,9 @@ class App {
         this.initialiseMiddleware();
         this.initialiseControllers(controllers);
         this.initialiseErrorHandling();
+        this.express.get("/*", (req, res) => {
+            res.sendFile(path_1.default.join(__dirname, "../build"));
+        });
     }
     initialiseMiddleware() {
         this.express.use((0, helmet_1.default)());
@@ -31,6 +34,7 @@ class App {
         // parse application/x-www-form-urlencoded
         this.express.use(express_1.default.urlencoded({ extended: false }));
         this.express.use((0, compression_1.default)());
+        this.express.use(express_1.default.static(path_1.default.join(__dirname, "../build")));
     }
     initialiseControllers(controllers) {
         controllers.forEach((controller) => {
@@ -38,7 +42,7 @@ class App {
         });
     }
     initialiseErrorHandling() {
-        this.express.use(error_middleware_1.default);
+        //this.express.use(ErrorMiddleware);
     }
     initialiseDB() {
         const url = this.dbUrl;
