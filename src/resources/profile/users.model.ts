@@ -1,8 +1,9 @@
 import { Schema, model } from "mongoose";
-import Profile from "./profile.interface";
+import Users from "./users.interface";
 
-const ProfileSchema = new Schema(
+const UsersSchema = new Schema(
   {
+    // id:{type:Object},
     userID: { type: Number, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
@@ -13,7 +14,7 @@ const ProfileSchema = new Schema(
   }
 );
 
-ProfileSchema.set("toJSON", {
+UsersSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id;
     delete returnedObject._id;
@@ -21,4 +22,4 @@ ProfileSchema.set("toJSON", {
   },
 });
 
-export default model<Profile>("Profile", ProfileSchema);
+export default model<Users>("Users", UsersSchema);

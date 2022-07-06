@@ -12,18 +12,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const profile_model_1 = __importDefault(require("../profile/profile.model"));
+const users_model_1 = __importDefault(require("./users.model"));
 class ProfileService {
     constructor() {
-        this.profile = profile_model_1.default;
+        this.users = users_model_1.default;
     }
-    updateProfile(profile) {
+    updateProfile(users) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const prof = yield this.profile.findByIdAndUpdate(profile.userID, profile);
+                const prof = yield this.users.findOneAndUpdate({ userID: users.userID }, { users }, { new: false });
+                console.log("Success");
                 return prof;
             }
             catch (err) {
+                console.log(err.message);
                 throw new Error("Unable to update profile.");
             }
         });
@@ -31,10 +33,12 @@ class ProfileService {
     getProfileById(userID) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const getProfile = yield this.profile.findById(userID);
+                const getProfile = yield this.users.findOne({ userID: userID });
+                console.log("Success");
                 return getProfile;
             }
             catch (err) {
+                console.log(err.message);
                 throw new Error("Unable to get profile.");
             }
         });

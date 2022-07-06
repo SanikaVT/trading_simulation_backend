@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const ProfileSchema = new mongoose_1.Schema({
+const UsersSchema = new mongoose_1.Schema({
+    // id:{type:Object},
     userID: { type: Number, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
@@ -10,11 +11,11 @@ const ProfileSchema = new mongoose_1.Schema({
     risk_appetite: { type: String, enum: ["High", "Medium", "Low"] },
     credits: { type: Number, required: true },
 });
-ProfileSchema.set("toJSON", {
+UsersSchema.set("toJSON", {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id;
         delete returnedObject._id;
         delete returnedObject.__v;
     },
 });
-exports.default = (0, mongoose_1.model)("Profile", ProfileSchema);
+exports.default = (0, mongoose_1.model)("Users", UsersSchema);

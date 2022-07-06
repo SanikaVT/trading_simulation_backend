@@ -13,26 +13,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const profile_service_1 = __importDefault(require("../profile/profile.service"));
-const profile_model_1 = __importDefault(require("../profile/profile.model"));
+const users_service_1 = __importDefault(require("./users.service"));
+const users_model_1 = __importDefault(require("./users.model"));
 class ProfileController {
     constructor() {
-        this.path = "/profile";
+        this.path = "/users";
         this.router = (0, express_1.Router)();
-        this.ProfileService = new profile_service_1.default();
+        this.ProfileService = new users_service_1.default();
         this.update = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const { userID, email, phone, account, risk_appetite, address, credits } = req.body;
-                var profile;
-                profile = new profile_model_1.default();
-                profile.userID = userID;
-                profile.email = email;
-                profile.phone = phone;
-                profile.account = account;
-                profile.risk_appetite = risk_appetite;
-                profile.address = address;
-                profile.credits = credits;
-                const updateProfile = yield this.ProfileService.updateProfile(profile);
+                var users;
+                users = new users_model_1.default();
+                users.userID = userID;
+                users.email = email;
+                users.phone = phone;
+                users.account = account;
+                users.risk_appetite = risk_appetite;
+                users.address = address;
+                users.credits = credits;
+                const updateProfile = yield this.ProfileService.updateProfile(users);
                 res.sendStatus(201);
             }
             catch (error) {
@@ -42,7 +42,7 @@ class ProfileController {
         });
         this.getProfile = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const userID = req.body;
+                const userID = req.body.userID;
                 const prof = yield this.ProfileService.getProfileById(userID);
                 res.send({ prof });
             }

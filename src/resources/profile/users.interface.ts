@@ -1,6 +1,7 @@
 import { Document } from "mongoose";
 
-export default interface Profile extends Document {
+export default interface Users extends Document {
+  // id:Object;
   userID: number;
   email: string;
   phone: string;
