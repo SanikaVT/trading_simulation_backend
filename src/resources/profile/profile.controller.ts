@@ -3,7 +3,7 @@ import Controller from "../../utils/interfaces/controller.interface";
 import ProfileService from "../profile/profile.service";
 import ProfileModel from "../profile/profile.model";
 import profileInterface from "./profile.interface";
-var profile: profileInterface;
+
 export default class ProfileController implements Controller {
   public path = "/profile";
   public router = Router();
@@ -24,6 +24,7 @@ export default class ProfileController implements Controller {
   ): Promise<Response | void> => {
     try {
       const { userID, email, phone, account, risk_appetite, address, credits } = req.body;
+      var profile: profileInterface;
       profile = new ProfileModel();
       profile.userID = userID;
       profile.email = email;
@@ -48,7 +49,8 @@ export default class ProfileController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const prof = await this.ProfileService.getProfileById(profile.userID);
+      const userID=req.body;
+      const prof = await this.ProfileService.getProfileById(userID);
       res.send({ prof });
     } catch (error: any) {
       console.log(error.message);

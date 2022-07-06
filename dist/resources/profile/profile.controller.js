@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const profile_service_1 = __importDefault(require("../profile/profile.service"));
 const profile_model_1 = __importDefault(require("../profile/profile.model"));
-var profile;
 class ProfileController {
     constructor() {
         this.path = "/profile";
@@ -24,6 +23,7 @@ class ProfileController {
         this.update = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const { userID, email, phone, account, risk_appetite, address, credits } = req.body;
+                var profile;
                 profile = new profile_model_1.default();
                 profile.userID = userID;
                 profile.email = email;
@@ -42,7 +42,8 @@ class ProfileController {
         });
         this.getProfile = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const prof = yield this.ProfileService.getProfileById(profile.userID);
+                const userID = req.body;
+                const prof = yield this.ProfileService.getProfileById(userID);
                 res.send({ prof });
             }
             catch (error) {

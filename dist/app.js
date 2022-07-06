@@ -8,6 +8,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const compression_1 = __importDefault(require("compression"));
 const morgan_1 = __importDefault(require("morgan"));
 const connect_1 = __importDefault(require("./connect"));
+//import ErrorMiddleware from "./middleware/error.middleware";
 const helmet_1 = __importDefault(require("helmet"));
 const path_1 = __importDefault(require("path"));
 const cors = require("cors");
@@ -22,7 +23,7 @@ class App {
         this.initialiseControllers(controllers);
         this.initialiseErrorHandling();
         this.express.get("/*", (req, res) => {
-            res.sendFile(path_1.default.join(__dirname, "../build"));
+            res.sendFile(path_1.default.join(__dirname, "../build", "index.html"));
         });
     }
     initialiseMiddleware() {

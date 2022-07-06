@@ -4,7 +4,7 @@ import compression from "compression";
 import morgan from "morgan";
 import connect from "./connect";
 import Controller from "@/utils/interfaces/controller.interface";
-import ErrorMiddleware from "./middleware/error.middleware";
+//import ErrorMiddleware from "./middleware/error.middleware";
 import helmet from "helmet";
 import path from "path";
 const cors = require("cors");
@@ -23,7 +23,7 @@ class App {
     this.initialiseControllers(controllers);
     this.initialiseErrorHandling();
     this.express.get("/*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../build"));
+      res.sendFile(path.join(__dirname, "../build", "index.html"));
     });
   }
 
