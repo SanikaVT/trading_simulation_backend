@@ -4,9 +4,10 @@ import Users from "./users.interface";
 export default class ProfileService {
   private users = UsersModel;
 
-  public async updateProfile(users: Users): Promise<any> {
+  public async updateProfile(users:Users): Promise<any> {
     try {
-      const prof = await this.users.findOneAndUpdate({userID:users.userID}, {users},{new:false});
+      console.log(users);
+      const prof = await this.users.findOneAndUpdate({userID:users.userID}, {address:users.address,credits:users.credits, account:users.account, risk_appetite:users.risk_appetite});
       console.log("Success");
       return prof;
     } catch (err:any) {
@@ -15,7 +16,7 @@ export default class ProfileService {
     }
   }
 
-  public async getProfileById(userID:Number): Promise<any> {
+  public async getProfileById(userID:any): Promise<any> {
     try {
       const getProfile = await this.users.findOne({userID:userID});
       console.log("Success");

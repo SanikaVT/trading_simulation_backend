@@ -22,12 +22,10 @@ class ProfileController {
         this.ProfileService = new users_service_1.default();
         this.update = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const { userID, email, phone, account, risk_appetite, address, credits } = req.body;
+                const { userID, account, risk_appetite, address, credits } = req.body;
                 var users;
                 users = new users_model_1.default();
                 users.userID = userID;
-                users.email = email;
-                users.phone = phone;
                 users.account = account;
                 users.risk_appetite = risk_appetite;
                 users.address = address;
@@ -42,8 +40,9 @@ class ProfileController {
         });
         this.getProfile = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const userID = req.body.userID;
-                const prof = yield this.ProfileService.getProfileById(userID);
+                const uID = req.query.userID;
+                console.log(req.query.userID);
+                const prof = yield this.ProfileService.getProfileById(uID);
                 res.send({ prof });
             }
             catch (error) {

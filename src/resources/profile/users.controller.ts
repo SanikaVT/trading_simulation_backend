@@ -23,12 +23,10 @@ export default class ProfileController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { userID, email, phone, account, risk_appetite, address, credits } = req.body;
+      const { userID, account, risk_appetite, address, credits } = req.body;
       var users: usersInterface;
       users = new UsersModel();
       users.userID = userID;
-      users.email = email;
-      users.phone = phone;
       users.account = account;
       users.risk_appetite =risk_appetite;
       users.address = address;
@@ -49,8 +47,9 @@ export default class ProfileController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const userID=req.body.userID;
-      const prof = await this.ProfileService.getProfileById(userID);
+      const uID=req.query.userID;
+      console.log(req.query.userID);
+      const prof = await this.ProfileService.getProfileById(uID);
       res.send({ prof });
     } catch (error: any) {
       console.log(error.message);

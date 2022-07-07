@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.e6630bc8.css",
-    "main.js": "/static/js/main.27d83ffb.js",
-    "static/media/AAPL_Yearly_HistoricalData.csv": "/static/media/AAPL_Yearly_HistoricalData.55ec0c2a96b3f2330367.csv",
-    "static/media/MSFT_Yearly_HistoricalData.csv": "/static/media/MSFT_Yearly_HistoricalData.e43216be9b21ef5028b5.csv",
-    "static/media/MSFT_half_yearly_HistoricalData.csv": "/static/media/MSFT_half_yearly_HistoricalData.bf57a5aafdb8ff1c46d5.csv",
-    "static/media/APPL_half_yearly_HistoricalData.csv": "/static/media/APPL_half_yearly_HistoricalData.9eb0c1eb204549443af3.csv",
+    "main.js": "/static/js/main.33201008.js",
+    "static/media/AAPL_Yearly_HistoricalData.csv": "/static/media/AAPL_Yearly_HistoricalData.7d3bfc77781fb180c9c8.csv",
+    "static/media/MSFT_Yearly_HistoricalData.csv": "/static/media/MSFT_Yearly_HistoricalData.06344bda9f288d0800ec.csv",
+    "static/media/MSFT_half_yearly_HistoricalData.csv": "/static/media/MSFT_half_yearly_HistoricalData.45f34e4f80a2b445ed91.csv",
+    "static/media/APPL_half_yearly_HistoricalData.csv": "/static/media/APPL_half_yearly_HistoricalData.a31cbdc828e0eaacc2e6.csv",
     "index.html": "/index.html",
     "main.e6630bc8.css.map": "/static/css/main.e6630bc8.css.map",
-    "main.27d83ffb.js.map": "/static/js/main.27d83ffb.js.map"
+    "main.33201008.js.map": "/static/js/main.33201008.js.map"
   },
   "entrypoints": [
     "static/css/main.e6630bc8.css",
-    "static/js/main.27d83ffb.js"
+    "static/js/main.33201008.js"
   ]
 }

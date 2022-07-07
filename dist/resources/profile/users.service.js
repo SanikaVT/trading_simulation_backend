@@ -20,7 +20,8 @@ class ProfileService {
     updateProfile(users) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const prof = yield this.users.findOneAndUpdate({ userID: users.userID }, { users }, { new: false });
+                console.log(users);
+                const prof = yield this.users.findOneAndUpdate({ userID: users.userID }, { address: users.address, credits: users.credits, account: users.account, risk_appetite: users.risk_appetite });
                 console.log("Success");
                 return prof;
             }
