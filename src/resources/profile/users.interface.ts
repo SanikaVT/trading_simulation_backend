@@ -1,7 +1,7 @@
 import { Document } from "mongoose";
 
+//Author: Sanika Tamhankar B00909848
 export default interface Users extends Document {
-  // id:Object;
   userID: string;
   first_name: string;
   last_name:string;

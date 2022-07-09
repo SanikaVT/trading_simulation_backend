@@ -1,6 +1,7 @@
 import CommentModel from "../forum/comment.model";
 import Comment from "../forum/comment.interface";
 
+//Author: Sanika Tamhankar B00909848
 export default class CommentService {
   private comment = CommentModel;
 

@@ -4,7 +4,7 @@ import CommentService from "../forum/comment.service";
 import CommentModel from "../forum/comment.model";
 const rn = require("random-number");
 
-
+//Author: Sanika Tamhankar B00909848
 export default class CommentController implements Controller {
   public path = "/forum";
   public router = Router();

@@ -1,6 +1,7 @@
 import UsersModel from "./users.model";
 import Users from "./users.interface";
 
+//Author: Sanika Tamhankar B00909848
 export default class ProfileService {
   private users = UsersModel;
 

@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
 import Users from "./users.interface";
 
+//Author: Sanika Tamhankar B00909848
 const UsersSchema = new Schema(
   {
     // id:{type:Object},

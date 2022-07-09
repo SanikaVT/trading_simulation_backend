@@ -4,6 +4,7 @@ import UsersService from "./users.service";
 import UsersModel from "./users.model";
 import usersInterface from "./users.interface";
 
+//Author: Sanika Tamhankar B00909848
 export default class ProfileController implements Controller {
   public path = "/users";
   public router = Router();
