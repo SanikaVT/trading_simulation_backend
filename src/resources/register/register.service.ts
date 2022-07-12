@@ -1,6 +1,6 @@
 import RegisterModel from "../register/register.model";
 import Register from "../register/register.interface";
-import Users from "@/resources/profile/users.interface";
+
 
 export default class RegisterService {
   private register = RegisterModel;
