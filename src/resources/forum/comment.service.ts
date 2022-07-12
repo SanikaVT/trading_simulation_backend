@@ -15,11 +15,12 @@ export default class CommentService {
     }
   }
 
-  public async getCommentsList(): Promise<Comment[]> {
+  public async getCommentsList(analyticsID:any): Promise<any> {
     try {
-      const comments = await this.comment.find();
+      const comments = await this.comment.find({analyticsID:analyticsID});
       return comments;
-    } catch (err) {
+    } catch (err:any) {
+      console.log(err.message);
       throw new Error("Unable to get comments.");
     }
   }

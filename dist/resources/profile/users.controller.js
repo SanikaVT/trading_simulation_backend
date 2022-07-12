@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const users_service_1 = __importDefault(require("./users.service"));
 const users_model_1 = __importDefault(require("./users.model"));
+//Author: Sanika Tamhankar B00909848
 class ProfileController {
     constructor() {
         this.path = "/users";

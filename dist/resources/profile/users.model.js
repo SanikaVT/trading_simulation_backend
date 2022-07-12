@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+//Author: Sanika Tamhankar B00909848
 const UsersSchema = new mongoose_1.Schema({
     // id:{type:Object},
     userID: { type: String, required: true },

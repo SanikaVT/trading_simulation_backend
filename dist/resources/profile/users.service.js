@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const users_model_1 = __importDefault(require("./users.model"));
+//Author: Sanika Tamhankar B00909848
 class ProfileService {
     constructor() {
         this.users = users_model_1.default;

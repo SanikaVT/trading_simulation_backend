@@ -52,7 +52,8 @@ export default class CommentController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const comments = await this.CommentService.getCommentsList();
+      const analyticsID= req.query.analyticsID;
+      const comments = await this.CommentService.getCommentsList(analyticsID);
       res.send({ comments });
     } catch (error: any) {
       console.log(error.message);
@@ -86,8 +87,7 @@ export default class CommentController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const commentID=req.query.commentID;
-      const analyticsID= req.query.analyticsID;
+      const { analyticsID, commentID} = req.body;
       console.log(req.query.commentID);
       const comment = await this.CommentService.deleteComment(analyticsID,commentID);
       res.send({ comment });
