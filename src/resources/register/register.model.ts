@@ -4,16 +4,16 @@ import Register from "./register.interface";
 const RegisterSchema = new Schema(
   {
     userID: { type: String, required: true },
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
+      first_name: { type: String, required: true },
+      last_name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    phoneNumber: { type: Number, required: true },
+      phone: { type: Number, required: true },
     address: { type: String, required: true },
-    creditsAvailable: { type: Number, required: true },
+      credits: { type: Number, required: true },
     creditCard: { type: Number, required: true },
-    timestamp: { type: Date, required: true },
-    // status: { type: String, enum: ["Cancelled", "Pending", "Placed"] },
+    // timestamp: { type: Date, required: true },
+     riskappetite: { type: String, enum: ["Low", "Medium", "High"] },
     // orderType: { type: String, enum: ["Buy", "Sell"] },
   },
   { timestamps: true }
@@ -27,4 +27,4 @@ RegisterSchema.set("toJSON", {
   },
 });
 
-export default model<Register>("Register", RegisterSchema);
+export default model<Register>("users", RegisterSchema);

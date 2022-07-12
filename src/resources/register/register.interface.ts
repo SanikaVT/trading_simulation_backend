@@ -1,14 +1,15 @@
 import { Document } from "mongoose";
 
 export default interface Register extends Document {
-  userID: number;
-  firstName: string;
-  lastName: string;
+  userID: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  password: number;
-  phoneNumber: number;
+  password: string;
+  phone: number;
   address: string;
-  creditsAvailable: number;
+  credits: number;
   creditCard: number;
-  timestamp: Date;
+  riskappetite: string;
+  // timestamp: Date;
 }
