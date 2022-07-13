@@ -33,7 +33,7 @@ export default class RegisterController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { first_name, last_name, email, password, phone, address, creditCard, riskappetite  } = req.body;
+      const { first_name, last_name, email, password, phone, address, account, risk_appetite  } = req.body;
 
       const register = new RegisterModel();
       // register.userID = "uuidv4()";
@@ -50,8 +50,8 @@ export default class RegisterController implements Controller {
       register.phone = phone;
       register.address = address;
       register.credits = 1000;
-      register.creditCard = creditCard;
-      register.riskappetite = riskappetite;
+      register.account = account;
+      register.risk_appetite = risk_appetite;
       const checkexists = await  this.RegisterService.getRegisters(email);
      // console.log(checkexists);
       if (checkexists === null){

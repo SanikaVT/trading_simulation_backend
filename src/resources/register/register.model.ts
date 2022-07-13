@@ -11,9 +11,9 @@ const RegisterSchema = new Schema(
       phone: { type: Number, required: true },
     address: { type: String, required: true },
       credits: { type: Number, required: true },
-    creditCard: { type: Number, required: true },
+    account: { type: String, required: true },
     // timestamp: { type: Date, required: true },
-     riskappetite: { type: String, enum: ["Low", "Medium", "High"] },
+     risk_appetite: { type: String, enum: ["Low", "Medium", "High"] },
     // orderType: { type: String, enum: ["Buy", "Sell"] },
   },
   { timestamps: true }
