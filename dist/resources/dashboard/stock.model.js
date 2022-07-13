@@ -7,6 +7,5 @@ const StockSchema = new mongoose_1.Schema({
     price: { type: Number, required: true },
     high: { type: Number, required: true },
     low: { type: Number, required: true },
-    isFavorite: { type: Boolean, required: true },
 });
 exports.default = (0, mongoose_1.model)("stocks", StockSchema);

@@ -6,5 +6,4 @@ export default interface Stock extends Document {
   price: number;
   high: number;
   low: number;
-  isFavorite: boolean;
 }
