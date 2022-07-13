@@ -15,9 +15,9 @@ export default class CommentService {
     }
   }
 
-  public async getCommentsList(analyticsID:any): Promise<any> {
+  public async getCommentsList(symbol:any): Promise<any> {
     try {
-      const comments = await this.comment.find({analyticsID:analyticsID});
+      const comments = await this.comment.find({symbol:symbol});
       return comments;
     } catch (err:any) {
       console.log(err.message);
@@ -28,19 +28,19 @@ export default class CommentService {
   public async updateComment(comment:Comment): Promise<any> {
     try {
       console.log(comment);
-      const comm = await this.comment.findOneAndUpdate({analyticsID:comment.analyticsID,commentID:comment.commentID}, {comment:comment.comment,creation_date:comment.creation_date});
+      const comm = await this.comment.findOneAndUpdate({symbol:comment.symbol,commentID:comment.commentID}, {comment:comment.comment,creation_date:comment.creation_date});
       console.log("Success");
       return comm;
     } catch (err:any) {
       console.log(err.message);
-      throw new Error("SUnable to update comment.");
+      throw new Error("Unable to update comment.");
     }
   }
 
-  public async deleteComment(analyticsID:any,commentID:any): Promise<any> {
+  public async deleteComment(symbol:any,commentID:any): Promise<any> {
     try {
       console.log(commentID);
-      const comm = await this.comment.findOneAndDelete({analyticsID:analyticsID,commentID:commentID});
+      const comm = await this.comment.findOneAndDelete({symbol:symbol,commentID:commentID});
       console.log("Success");
       return comm;
     } catch (err:any) {

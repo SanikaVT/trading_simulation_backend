@@ -27,14 +27,14 @@ export default class CommentController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { analyticsID, comment} = req.body;
+      const { symbol, comment} = req.body;
       const options = {
         min: 12345,
         max: 20000,
         integer: true,
       };
       const comments = new CommentModel();
-      comments.analyticsID = analyticsID;
+      comments.symbol = symbol;
       comments.commentID = rn(options).toString();
       comments.comment = comment;
       comments.creation_date = new Date().toString();
@@ -52,8 +52,8 @@ export default class CommentController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const analyticsID= req.query.analyticsID;
-      const comments = await this.CommentService.getCommentsList(analyticsID);
+      const symbol= req.query.symbol;
+      const comments = await this.CommentService.getCommentsList(symbol);
       res.send({ comments });
     } catch (error: any) {
       console.log(error.message);
@@ -67,9 +67,9 @@ export default class CommentController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { analyticsID, commentID, comment } = req.body;
+      const {  symbol, commentID, comment } = req.body;
       const comments = new CommentModel();
-      comments.analyticsID = analyticsID;
+      comments.symbol = symbol;
       comments.commentID = commentID;
       comments.comment = comment;
       comments.creation_date = new Date().toString();
@@ -87,9 +87,9 @@ export default class CommentController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { analyticsID, commentID} = req.body;
+      const { symbol, commentID} = req.body;
       console.log(req.query.commentID);
-      const comment = await this.CommentService.deleteComment(analyticsID,commentID);
+      const comment = await this.CommentService.deleteComment(symbol,commentID);
       res.send({ comment });
     } catch (error: any) {
       console.log(error.message);
