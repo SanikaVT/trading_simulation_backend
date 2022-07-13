@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "homepage": ".",
   "scripts": {
     "build": "npx tsc",
     "postinstall": "npm run build",

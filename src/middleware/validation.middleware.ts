@@ -24,7 +24,7 @@ export default function validationMiddleware(
       error.details.forEach((err: Joi.ValidationErrorItem) => {
         errors.push(err.message);
       });
-      res.status(400).send(errors);
+      res.sendStatus(400).send(errors);
     }
   };
 }
