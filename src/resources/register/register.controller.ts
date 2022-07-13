@@ -100,12 +100,14 @@ export default class RegisterController implements Controller {
       const email=req.body.email;
       const password=req.body.password;
       const checklogin = await this.RegisterService.login(email,password);
-
+    console.log(checklogin);
       if(checklogin === null){
         res.sendStatus(404);
       }
       else{
-        res.sendStatus(200);
+        res.status(200);
+        res.send(checklogin);
+        // res.sendStatus(200);
       }
       // res.send({ register });
 
