@@ -1,0 +1,30 @@
+{
+  "name": "random-number",
+  "description": "Generate pseudo-randum numbers",
+  "version": "0.0.9",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js",
+    "prepublish": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ashnur/random-number.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ashnur/random-number/issues"
+  },
+  "keywords": [
+    "random-number",
+    "random",
+    "random-integer"
+  ],
+  "author": "ashnur",
+  "license": "BSD-2-Clause",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "tape": "~2.3.2",
+    "claire": "~0.4.1"
+  },
+  "dependencies": {}
+}

@@ -14,7 +14,6 @@ export default function validationMiddleware(
       allowUnknown: true,
       stripUnkown: true,
     };
-
     try {
       const value = await schema.validateAsync(req.body, validationOptions);
       req.body = value;
