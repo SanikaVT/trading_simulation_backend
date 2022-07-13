@@ -4,8 +4,9 @@ import compression from "compression";
 import morgan from "morgan";
 import connect from "./connect";
 import Controller from "@/utils/interfaces/controller.interface";
-import ErrorMiddleware from "./middleware/error.middleware";
+//import ErrorMiddleware from "./middleware/error.middleware";
 import helmet from "helmet";
+import path from "path";
 const cors = require("cors");
 dotenv.config();
 
@@ -21,6 +22,9 @@ class App {
     this.initialiseMiddleware();
     this.initialiseControllers(controllers);
     this.initialiseErrorHandling();
+    this.express.get("/*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../build", "index.html"));
+    });
   }
 
   private initialiseMiddleware(): void {
@@ -32,6 +36,7 @@ class App {
     // parse application/x-www-form-urlencoded
     this.express.use(express.urlencoded({ extended: false }));
     this.express.use(compression());
+    this.express.use(express.static(path.join(__dirname, "../build")));
   }
 
   private initialiseControllers(controllers: Controller[]): void {
@@ -41,7 +46,7 @@ class App {
   }
 
   private initialiseErrorHandling(): void {
-    this.express.use(ErrorMiddleware);
+    //this.express.use(ErrorMiddleware);
   }
 
   private initialiseDB(): void {
