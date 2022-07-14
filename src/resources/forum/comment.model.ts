@@ -4,6 +4,7 @@ import Comment from "./comment.interface";
 //Author: Sanika Tamhankar B00909848
 const CommentSchema = new Schema(
   {
+    userID: { type: String, required: true },
     symbol: { type: String, required: true },
     commentID: { type: String, required: true },
     comment: { type: String, required: true },

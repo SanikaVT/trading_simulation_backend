@@ -27,13 +27,14 @@ export default class CommentController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { symbol, comment} = req.body;
+      const { userID, symbol, comment} = req.body;
       const options = {
         min: 12345,
         max: 20000,
         integer: true,
       };
       const comments = new CommentModel();
+      comments.userID=userID;
       comments.symbol = symbol;
       comments.commentID = rn(options).toString();
       comments.comment = comment;
