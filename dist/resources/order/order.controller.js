@@ -23,13 +23,14 @@ class OrderController {
         this.OrderService = new order_service_1.default();
         this.create = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const { symbol, quantity, price, orderType } = req.body;
+                const { userId, symbol, quantity, price, orderType } = req.body;
                 const options = {
                     min: 12345,
                     max: 20000,
                     integer: true,
                 };
                 const order = new order_model_1.default();
+                order.userID = userId;
                 order.orderID = rn(options);
                 order.symbol = symbol;
                 order.quantity = quantity;

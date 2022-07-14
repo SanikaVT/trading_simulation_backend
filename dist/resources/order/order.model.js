@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const OrderSchema = new mongoose_1.Schema({
+    userID: { type: String, required: true },
     orderID: { type: String, required: true },
     symbol: { type: String, required: true },
     quantity: { type: Number, required: true },
