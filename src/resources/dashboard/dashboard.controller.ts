@@ -18,7 +18,7 @@ export default class DashboardController implements Controller {
   }
 
   private initialiseRoutes(): void {
-    this.router.get(`${this.path}`, this.getRecommendedStocks);
+    this.router.post(`${this.path}`, this.getRecommendedStocks);
     this.router.get(`${this.path}/favorites`, this.getFavoriteStocks);
     this.router.post(`${this.path}/favorites`, this.addToFavorites);
     this.router.delete(`${this.path}/delete`, this.deleteFromFavorite);
@@ -30,9 +30,39 @@ export default class DashboardController implements Controller {
     res: Response
   ): Promise<Response | void> => {
     try {
-      const recommendedStocks =
-        await this.dashboardService.findAllRecommended();
-      res.send({ recommendedStocks });
+      const userId = req.body.userId;
+
+      const user = await this.dashboardService.findUserRisk(userId);
+
+      let stocks = await this.dashboardService.findAllRecommendedStocks();
+      let recommendedStocks = [];
+      switch (user[0].risk_appetite) {
+        case "High":
+          let high_difference = 200;
+          recommendedStocks = stocks.filter((stock: any) => {
+            let dif = stock.high - stock.low;
+            console.log(dif);
+            if (dif > high_difference) {
+              console.log("dif", dif);
+              return stock;
+            }
+          });
+          console.log("stocks", stocks);
+          res.send({ recommendedStocks });
+          break;
+        case "Low":
+          let low_difference = 200;
+          recommendedStocks = stocks.filter((stock: any) => {
+            let dif = stock.high - stock.low;
+            console.log(dif);
+            if (dif < low_difference) {
+              console.log("dif", dif);
+              return stock;
+            }
+          });
+          res.send({ recommendedStocks });
+          break;
+      }
     } catch (error: any) {
       console.log(error.message);
     }
