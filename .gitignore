@@ -18,7 +18,11 @@
 .env.development.local
 .env.test.local
 .env.production.local
+dist
+.gitignore
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.gitignore
+
