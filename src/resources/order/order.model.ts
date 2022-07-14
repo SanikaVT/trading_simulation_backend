@@ -3,6 +3,7 @@ import Order from "./order.interface";
 
 const OrderSchema = new Schema(
   {
+    userID: { type: String, required: true },
     orderID: { type: String, required: true },
     symbol: { type: String, required: true },
     quantity: { type: Number, required: true },
