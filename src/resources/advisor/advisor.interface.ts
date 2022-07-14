@@ -9,5 +9,6 @@ export default interface Advisor extends Document {
     age: number;
     address: String;
     image:String;
-    title:String
+    title:String;
+    fullName:String
 }

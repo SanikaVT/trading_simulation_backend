@@ -11,7 +11,8 @@ const AdvisorSchema = new Schema(
         age: { type: Number, required: true },
         address: { type: String, required: true },
         image:{ type: String,require: true },
-        title:{ type: String, enum:['mr','miss','mrs','ms']}
+        title:{ type: String, enum:['mr','miss','mrs','ms']},
+        fullName: { type:String, required:true}
     }
 );
 export default model<Advisor>("Advisor", AdvisorSchema);

@@ -17,7 +17,7 @@ export default class AdvisorController implements Controller {
     private initialiseRoutes(): void {
         this.router.post(`${this.path}`, this.create);
         this.router.get(`${this.path}`, this.getAdvisor);
-        this.router.get(`${this.path}/:email`,this.getOne)
+        this.router.get(`${this.path}/:id`,this.getOne);
     }
 
     private create = async (
@@ -50,6 +50,7 @@ export default class AdvisorController implements Controller {
             advisor.address = address;
             advisor.image = image;
             advisor.title = title;
+            advisor.fullName = firstName.concat("-").concat(lastName)
 
             const createdAdvisor = await this.AdvisorService.create(advisor);
             console.log(req.body)
@@ -80,12 +81,28 @@ export default class AdvisorController implements Controller {
         res: Response,
         next: NextFunction
     ): Promise<Response | void> => {
-        try {
-            const advisor = await this.AdvisorService.getOne(req.params.email);
-            res.send({ advisor });
-        } catch (error: any) {
-            console.log(error.message);
-            //next(new HttpException(400, error.message));
+        if(isNaN(parseInt(req.params.id))){
+            try {
+                const advisor = await this.AdvisorService.getOneByName(req.params.id);
+                console.log(req.params.id)
+                res.send({ advisor });
+            } catch (error: any) {
+                console.log(error.message);
+                //next(new HttpException(400, error.message));
+            }
+        }else{
+            try {
+                const advisor = await this.AdvisorService.getOne(parseInt(req.params.id));
+                res.send({ advisor });
+            } catch (error: any) {
+                console.log(error.message);
+                //next(new HttpException(400, error.message));
+            }
         }
+      
     }
+
+    
+
+
 }

@@ -24,14 +24,25 @@ export default class AdvisorService {
         }
     }
 
-    public async getOne(email:string): Promise<Advisor|null>{
+    public async getOne(id:number): Promise<Advisor|null>{
         try {
-            const advisors = await this.advisor.findOne({email});
+            const advisors = await this.advisor.findOne({id});
             return advisors;
         } catch (err) {
             throw new Error("Unable to get advisor.");
         }
     }
+
+    public async getOneByName(fullName: string): Promise<Advisor | null> {
+        try {
+            const advisors = await this.advisor.findOne({ fullName });
+            return advisors;
+        } catch (err) {
+            console.log(err)
+            throw new Error("Unable to get advisor.");
+        }
+    }
+
 
    
 }
