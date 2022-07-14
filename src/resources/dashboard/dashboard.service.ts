@@ -4,13 +4,11 @@
 
 import stockModel from "./stock.model";
 import favoriteModel from "./favorite.model";
+import usersModel from "../profile/users.model";
 
 import console from "console";
-
-/**
- * MongoDB
- * store all stocks from DB to a list
- */
+import { Types } from "mongoose";
+import stockInterface from "./stock.interface";
 
 /**
  * Service class
@@ -20,15 +18,25 @@ import console from "console";
 export default class DashboardService {
   private stock = stockModel;
   private favorite = favoriteModel;
+  private user = usersModel;
+  public highStocks = [];
+  public lowStocks = [];
+  public stockList = [];
 
-  public findAllRecommended() {
-    let stockList = this.stock.find();
-    return stockList;
+  public findUserRisk(id: any) {
+    console.log("inside");
+    let user = this.user.find({ userID: id });
+    return user;
+  }
+
+  findAllRecommendedStocks() {
+    //logic to get back stocks matching this risk_appetite
+    let stocks = this.stock.find();
+    return stocks;
   }
 
   public findAllFavorite() {
     let favoriteStocks = this.favorite.find({ userId: 1 });
-
     return favoriteStocks;
   }
 
