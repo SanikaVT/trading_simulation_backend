@@ -24,13 +24,14 @@ export default class OrderController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { symbol, quantity, price, orderType } = req.body;
+      const { userId, symbol, quantity, price, orderType } = req.body;
       const options = {
         min: 12345,
         max: 20000,
         integer: true,
       };
       const order = new OrderModel();
+      order.userID = userId;
       order.orderID = rn(options);
       order.symbol = symbol;
       order.quantity = quantity;
