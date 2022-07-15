@@ -13,6 +13,8 @@ import RegisterController from "./resources/register/register.controller";
 import YearlyAnalyticsController from "./resources/yearlyanalytics/analytics.controller";
 import HalfYearlyAnalyticsController from "./resources/halfyearlyanalytics/analytics.controller";
 import StockFinancialsController from "./resources/stockfinancials/analytics.controller";
+import AdvisorController from "./resources/advisor/advisor.controller";
+import AppointmentController from "./resources/appointmen/appointment.controller";
 const { PORT, MONGODB_URL } = require("./config/config");
 
 validateEnv();
