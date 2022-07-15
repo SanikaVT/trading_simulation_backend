@@ -7,5 +7,6 @@ export default interface Appointment extends Document {
     lastName: string;
     age:number;
     address: string;
-    date:Date
+    date:Date,
+    userID:number
 }

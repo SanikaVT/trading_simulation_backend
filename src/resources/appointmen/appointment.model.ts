@@ -11,6 +11,7 @@ const AppointmentSchema = new Schema(
         address: { type: String, required: true },
         date: { type:Date, require: true },
         fullName: { type:String, require: true},
+        userID:{ type:Number, require: true}
     }
 );
 export default model<Appointment>("Appointment", AppointmentSchema);

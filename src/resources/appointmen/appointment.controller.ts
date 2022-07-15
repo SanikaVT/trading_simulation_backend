@@ -18,6 +18,7 @@ export default class AppointmentController implements Controller {
         this.router.post(`${this.path}`, this.create);
         this.router.get(`${this.path}`, this.getAppointment);
         this.router.delete(`${this.path}/:id`,this.cancelAppointment)
+        this.router.get(`${this.path}/:userID`, this.getAppointmentByUserID)
     }
 
     private create = async (
@@ -31,7 +32,7 @@ export default class AppointmentController implements Controller {
             firstName,
             age,
             address,
-            date} = req.body;
+            date,userID} = req.body;
             const options = {
                 min: 12345,
                 max: 20000,
@@ -45,7 +46,8 @@ export default class AppointmentController implements Controller {
             appointment.age = age;
             appointment.address = address;
             appointment.firstName = firstName;
-            appointment.date = date
+            appointment.date = date;
+            appointment.userID = userID;
             
 
             const createdappointment = await this.AppointmentService.create(appointment);
@@ -80,6 +82,21 @@ export default class AppointmentController implements Controller {
             res.send( "deleted");
         } catch (error: any) {
             console.log(error.message);
+            res.send(error);
+            //next(new HttpException(400, error.message));
+        }
+    };
+
+    private getAppointmentByUserID = async (
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ): Promise<Response | void> => {
+        try {
+            const appointment = await this.AppointmentService.getAppointmentByUserID(parseInt(req.params.userID));
+            res.send({appointment});
+        } catch (error: any) {
+            res.send(error);
             //next(new HttpException(400, error.message));
         }
     };

@@ -28,4 +28,15 @@ export default class AppointmentService {
             throw new Error("Unable to delete appointment.");
         }
     }
+
+    public async getAppointmentByUserID(userID: number): Promise<Appointment[]> {
+        try {
+            console.log(userID)
+            const appointment = await this.appointment.find({ userID});
+            return appointment
+        } catch (err) { 
+            console.log(err)
+            throw new Error("Unable to  get appointment.");
+        }
+    }
 }
