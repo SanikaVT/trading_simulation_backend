@@ -30,7 +30,6 @@ export default class HalfYearlyAnalyticsController implements Controller {
       res.send({ analytics });
     } catch (error: any) {
       console.log(error.message);
-      //next(new HttpException(400, error.message));
     }
   };
 }

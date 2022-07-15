@@ -1,7 +1,11 @@
 import UsersModel from "./users.model";
 import Users from "./users.interface";
 
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 export default class ProfileService {
   private users = UsersModel;
 

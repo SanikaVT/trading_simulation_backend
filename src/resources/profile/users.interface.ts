@@ -1,6 +1,10 @@
 import { Document } from "mongoose";
 
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 export default interface Users extends Document {
   userID: string;
   first_name: string;

@@ -1,10 +1,13 @@
 import { Schema, model } from "mongoose";
 import Users from "./users.interface";
 
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 const UsersSchema = new Schema(
   {
-    // id:{type:Object},
     userID: { type: String, required: true },
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },

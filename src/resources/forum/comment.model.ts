@@ -1,7 +1,11 @@
 import { Schema, model } from "mongoose";
 import Comment from "./comment.interface";
 
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 const CommentSchema = new Schema(
   {
     userID: { type: String, required: true },

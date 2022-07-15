@@ -4,7 +4,11 @@ import UsersService from "./users.service";
 import UsersModel from "./users.model";
 import usersInterface from "./users.interface";
 
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 export default class ProfileController implements Controller {
   public path = "/users";
   public router = Router();

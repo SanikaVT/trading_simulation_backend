@@ -1,7 +1,11 @@
 import CommentModel from "../forum/comment.model";
 import Comment from "../forum/comment.interface";
 
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 export default class CommentService {
   private comment = CommentModel;
 
