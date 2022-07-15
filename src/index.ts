@@ -28,6 +28,8 @@ const app = new App(
     new YearlyAnalyticsController(),
     new HalfYearlyAnalyticsController(),
     new StockFinancialsController(),
+    new AdvisorController(),
+    new AppointmentController(),  
   ],
   Number(PORT),
   MONGODB_URL

@@ -18,6 +18,8 @@ const register_controller_1 = __importDefault(require("./resources/register/regi
 const analytics_controller_1 = __importDefault(require("./resources/yearlyanalytics/analytics.controller"));
 const analytics_controller_2 = __importDefault(require("./resources/halfyearlyanalytics/analytics.controller"));
 const analytics_controller_3 = __importDefault(require("./resources/stockfinancials/analytics.controller"));
+const advisor_controller_1 = __importDefault(require("./resources/advisor/advisor.controller"));
+const appointment_controller_1 = __importDefault(require("./resources/appointmen/appointment.controller"));
 const { PORT, MONGODB_URL } = require("./config/config");
 (0, validateEnv_1.default)();
 const app = new app_1.default([
@@ -29,5 +31,7 @@ const app = new app_1.default([
     new analytics_controller_1.default(),
     new analytics_controller_2.default(),
     new analytics_controller_3.default(),
+    new advisor_controller_1.default(),
+    new appointment_controller_1.default(),
 ], Number(PORT), MONGODB_URL);
 app.listen();
