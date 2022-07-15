@@ -31,9 +31,11 @@ export default class OrderService {
       const orders = await this.order.find({
         userID: userId,
         symbol: symbol,
-        status: "Placed",
       });
-      return orders?.length;
+      const count =
+        orders.filter((order) => order.status === "Placed").length -
+        orders.filter((order) => order.status === "Executed").length;
+      return count;
     } catch (err) {
       throw new Error("Unable to get orders.");
     }

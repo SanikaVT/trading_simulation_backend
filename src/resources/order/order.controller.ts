@@ -57,6 +57,8 @@ export default class OrderController implements Controller {
           if (currentMargin - orderAmount < 0) {
             order.status = "Cancelled";
             updatedMargin = currentMargin;
+          } else {
+            updatedMargin = currentMargin - orderAmount;
           }
         } else {
           updatedMargin = currentMargin + orderAmount;
