@@ -16,6 +16,7 @@ export default class ProfileController implements Controller {
   private initialiseRoutes(): void {
     this.router.post(`${this.path}`, this.update);
     this.router.get(`${this.path}`, this.getProfile);
+    this.router.get(`${this.path}/credits`, this.getUserCredits);
   }
 
   private update = async (
@@ -29,7 +30,7 @@ export default class ProfileController implements Controller {
       users = new UsersModel();
       users.userID = userID;
       users.account = account;
-      users.risk_appetite =risk_appetite;
+      users.risk_appetite = risk_appetite;
       users.address = address;
       users.credits = credits;
 
@@ -48,13 +49,31 @@ export default class ProfileController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const uID=req.query.userID;
+      const uID = req.query.userID;
       console.log(req.query.userID);
       const prof = await this.ProfileService.getProfileById(uID);
       res.send({ prof });
     } catch (error: any) {
       console.log(error.message);
       //next(new HttpException(400, error.message));
+    }
+  };
+
+  /**
+   * Author: Udit Gandhi
+   */
+  private getUserCredits = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<Response | void> => {
+    try {
+      const userId = req.query.userID;
+      const credits = await this.ProfileService.getUserCredits(userId);
+      res.send({ credits });
+    } catch (error: any) {
+      console.log(error.message);
+      res.sendStatus(500);
     }
   };
 }

@@ -1,3 +1,6 @@
+/**
+ * Author: Udit Gandhi
+ */
 import { Request, Response } from "express";
 import HttpException from "@/utils/exceptions/http.exception";
 

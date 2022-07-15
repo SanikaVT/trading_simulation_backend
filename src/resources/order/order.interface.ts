@@ -1,3 +1,6 @@
+/**
+ * Author: Udit Gandhi
+ */
 import { Document } from "mongoose";
 
 export default interface Order extends Document {
