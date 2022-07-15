@@ -1,7 +1,16 @@
+/**
+
+ * Author: Prakrut Suthar
+
+ * BannerID: B00885349
+
+ * Email:prakrut@dal.ca
+
+*/
+
 import NewsModel from "../news/news.model";
 import News from "../news/news.interface";
 
-//Author: Prakrut Suthar
 export default class NewsService {
   private news = NewsModel;
 

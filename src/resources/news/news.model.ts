@@ -1,7 +1,16 @@
+/**
+
+ * Author: Prakrut Suthar
+
+ * BannerID: B00885349
+
+ * Email:prakrut@dal.ca
+
+*/
+
 import { Schema, model } from "mongoose";
 import News from "./news.interface";
 
-//Author: Prakrut Suthar
 const NewsSchema = new Schema(
   {
     newsID: { type: String, required: true },
