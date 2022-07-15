@@ -6,9 +6,12 @@ import Users from "./users.interface";
  * BannerID: B00909848
  * Email: sn295037@dal.ca
  */
+
+//Contains main logic which deals with MongoDB CRUD operations using Mongoose.
+
 export default class ProfileService {
   private users = UsersModel;
-
+  //update profile using findOneAndUpdate method of Mongoose
   public async updateProfile(users: Users): Promise<any> {
     try {
       const prof = await this.users.findOneAndUpdate(
@@ -25,7 +28,7 @@ export default class ProfileService {
       throw new Error("Unable to update profile.");
     }
   }
-
+  //get profile using findOne method of Mongoose
   public async getProfileById(userID: any): Promise<any> {
     try {
       const getProfile = await this.users.findOne({ userID: userID });
@@ -40,6 +43,7 @@ export default class ProfileService {
   /**
    * Author: Udit Gandhi
    */
+  //update user credits using findOneAndUpdate method of Mongoose
   public async updateUserCredits(
     userID: string,
     credits: number
@@ -61,6 +65,7 @@ export default class ProfileService {
   /**
    * Author: Udit Gandhi
    */
+  //get user credits using findOne method of Mongoose
   public async getUserCredits(userID: any): Promise<any> {
     try {
       const user = await this.users.findOne({ userID: userID });
