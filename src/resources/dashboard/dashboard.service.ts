@@ -35,8 +35,8 @@ export default class DashboardService {
     return stocks;
   }
 
-  public findAllFavorite() {
-    let favoriteStocks = this.favorite.find({ userId: 1 });
+  public findAllFavorite(id:any) {
+    let favoriteStocks = this.favorite.find({ userId: id });
     return favoriteStocks;
   }
 

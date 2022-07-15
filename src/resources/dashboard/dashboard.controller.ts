@@ -2,9 +2,7 @@
 //Controllers will call services where all business logics will be performed
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "@/utils/interfaces/controller.interface";
-import HttpException from "@/utils/exceptions/http.exception";
 import DashboardService from "./dashboard.service";
-
 
 export default class DashboardController implements Controller {
   public path = "/dashboard";
@@ -17,7 +15,7 @@ export default class DashboardController implements Controller {
 
   private initialiseRoutes(): void {
     this.router.post(`${this.path}`, this.getRecommendedStocks);
-    this.router.get(`${this.path}/favorites`, this.getFavoriteStocks);
+    this.router.post(`${this.path}/favorite`, this.getFavoriteStocks);
     this.router.post(`${this.path}/favorites`, this.addToFavorites);
     this.router.delete(`${this.path}/delete`, this.deleteFromFavorite);
   }
@@ -53,7 +51,7 @@ export default class DashboardController implements Controller {
           recommendedStocks = stocks.filter((stock: any) => {
             let dif = stock.high - stock.low;
             console.log(dif);
-            if (dif < low_difference) {
+            if (dif <= low_difference) {
               console.log("dif", dif);
               return stock;
             }
@@ -72,7 +70,8 @@ export default class DashboardController implements Controller {
     res: Response
   ): Promise<Response | void> => {
     try {
-      let favoriteStocks = await this.dashboardService.findAllFavorite();
+      const userId = req.body.userId;
+      let favoriteStocks = await this.dashboardService.findAllFavorite(userId);
       console.log("favorites are", favoriteStocks[0].stocks);
       const favorites = await this.dashboardService.findAllFavoriteStocks(
         favoriteStocks[0].stocks
