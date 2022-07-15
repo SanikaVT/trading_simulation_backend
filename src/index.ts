@@ -16,6 +16,7 @@ import StockFinancialsController from "./resources/stockfinancials/analytics.con
 import AdvisorController from "./resources/advisor/advisor.controller";
 import AppointmentController from "./resources/appointmen/appointment.controller";
 const { PORT, MONGODB_URL } = require("./config/config");
+import NewsController from "./resources/news/news.controller";
 
 validateEnv();
 const app = new App(
@@ -29,7 +30,8 @@ const app = new App(
     new HalfYearlyAnalyticsController(),
     new StockFinancialsController(),
     new AdvisorController(),
-    new AppointmentController(),  
+    new AppointmentController(),
+    new NewsController(),
   ],
   Number(PORT),
   MONGODB_URL
