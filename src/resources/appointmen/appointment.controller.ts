@@ -1,26 +1,28 @@
+// author: qiwei sun
+// date: 2022/07/15
+// description: this file defined all the business logic handled by the appointment
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
 import HttpException from "../../utils/exceptions/http.exception";
 import AppointmentService from "./appointment.service"
 import AppointmentModel from "./appointment.model";
 const rn = require("random-number");
-
-
 export default class AppointmentController implements Controller {
+    // delcate api router and path
     public path = "/appointment";
     public router = Router();
     private AppointmentService = new AppointmentService();
     constructor() {
         this.initialiseRoutes();
     }
-
+    // initialize all the api call
     private initialiseRoutes(): void {
         this.router.post(`${this.path}`, this.create);
         this.router.get(`${this.path}`, this.getAppointment);
         this.router.delete(`${this.path}/:id`,this.cancelAppointment)
         this.router.get(`${this.path}/:userID`, this.getAppointmentByUserID)
     }
-
+    // create a appointment
     private create = async (
         req: Request,
         res: Response,
@@ -58,7 +60,8 @@ export default class AppointmentController implements Controller {
             //next(new HttpException(400, error.message));
         }
     };
-
+    
+    //get all appointment
     private getAppointment = async (
         req: Request,
         res: Response,
@@ -72,6 +75,8 @@ export default class AppointmentController implements Controller {
             //next(new HttpException(400, error.message));
         }
     };
+
+    //delete the appointment
     private cancelAppointment = async (
         req: Request,
         res: Response,
@@ -87,6 +92,7 @@ export default class AppointmentController implements Controller {
         }
     };
 
+   //filter appointmens by userID, only show appointments that crated by the user 
     private getAppointmentByUserID = async (
         req: Request,
         res: Response,

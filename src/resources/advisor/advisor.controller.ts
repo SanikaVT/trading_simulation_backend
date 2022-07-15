@@ -1,3 +1,7 @@
+/* author: qiwei sun
+date: 2022/07/15
+description:This file handle the business logic for advisor. 
+it provided 3 api call post /api/advisor get /api/advisor and get /api/advosr/:id*/
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
 import HttpException from "../../utils/exceptions/http.exception";
@@ -15,11 +19,16 @@ export default class AdvisorController implements Controller {
     }
 
     private initialiseRoutes(): void {
+        // create a advisor
         this.router.post(`${this.path}`, this.create);
+        // get all the advisor
         this.router.get(`${this.path}`, this.getAdvisor);
+        // get advisor by id or get by name depende on request parameter
         this.router.get(`${this.path}/:id`,this.getOne);
     }
 
+    // method to create advisor, read from request body and store adviosr object in mongodb
+    // @params: req.body
     private create = async (
         req: Request,
         res: Response,
@@ -62,6 +71,8 @@ export default class AdvisorController implements Controller {
         }
     };
 
+    // method to get all advisor in database
+    // @params: null
     private getAdvisor = async (
         req: Request,
         res: Response,
@@ -76,6 +87,8 @@ export default class AdvisorController implements Controller {
         }
     };
 
+    // method to get a advisor by it id or it's name in database
+    // @params: null
     private getOne = async (
         req: Request,
         res: Response,
