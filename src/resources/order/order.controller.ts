@@ -52,12 +52,18 @@ export default class OrderController implements Controller {
       if (createdOrder) {
         const orderAmount = quantity * price;
         const profileService = new ProfileService();
-        if (currentMargin - orderAmount < 0) {
-          order.status = "Cancelled";
+        let updatedMargin = 0;
+        if (orderType === "Buy") {
+          if (currentMargin - orderAmount < 0) {
+            order.status = "Cancelled";
+            updatedMargin = currentMargin;
+          }
+        } else {
+          updatedMargin = currentMargin + orderAmount;
         }
         const user = await profileService.updateUserCredits(
           userId,
-          currentMargin - orderAmount
+          updatedMargin
         );
         console.log(user);
       } else {
