@@ -1,6 +1,15 @@
+/**
+
+ * Author: Prakrut Suthar
+
+ * BannerID: B00885349
+
+ * Email:prakrut@dal.ca
+
+*/
+
 import { Document } from "mongoose";
 
-//Author: Prakrut Suthar
 export default interface News extends Document {
   newsID: string;
   userID: string;
