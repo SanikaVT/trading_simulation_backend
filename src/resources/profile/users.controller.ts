@@ -22,7 +22,7 @@ export default class ProfileController implements Controller {
     this.router.get(`${this.path}`, this.getProfile);
     this.router.get(`${this.path}/credits`, this.getUserCredits);
   }
-
+  //takas user information that needs to be updated and passes it to service 
   private update = async (
     req: Request,
     res: Response,
@@ -46,7 +46,7 @@ export default class ProfileController implements Controller {
       //next(new HttpException(400, error.message));
     }
   };
-
+  //takes userID as a query param, passes it to service and return profile information
   private getProfile = async (
     req: Request,
     res: Response,
@@ -63,9 +63,7 @@ export default class ProfileController implements Controller {
     }
   };
 
-  /**
-   * Author: Udit Gandhi
-   */
+  //Get user credits by userID from service
   private getUserCredits = async (
     req: Request,
     res: Response,
