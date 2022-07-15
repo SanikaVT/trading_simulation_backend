@@ -5,6 +5,8 @@ import { Document } from "mongoose";
  * BannerID: B00909848
  * Email: sn295037@dal.ca
  */
+
+//Interface for User
 export default interface Users extends Document {
   userID: string;
   first_name: string;
