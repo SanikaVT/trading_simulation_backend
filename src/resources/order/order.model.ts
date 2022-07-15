@@ -1,3 +1,6 @@
+/**
+ * Author: Udit Gandhi
+ */
 import { Schema, model } from "mongoose";
 import Order from "./order.interface";
 
@@ -9,7 +12,10 @@ const OrderSchema = new Schema(
     quantity: { type: Number, required: true },
     price: { type: Number, required: true },
     timestamp: { type: Date, required: true },
-    status: { type: String, enum: ["Cancelled", "Pending", "Placed"] },
+    status: {
+      type: String,
+      enum: ["Cancelled", "Pending", "Placed", "Executed"],
+    },
     orderType: { type: String, enum: ["Buy", "Sell"] },
   },
   { timestamps: true }

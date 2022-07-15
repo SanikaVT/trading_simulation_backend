@@ -1,3 +1,6 @@
+/**
+ * Author: Udit Gandhi
+ */
 import express, { Application } from "express";
 import dotenv from "dotenv";
 import compression from "compression";
