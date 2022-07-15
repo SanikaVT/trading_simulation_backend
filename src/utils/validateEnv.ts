@@ -1,3 +1,6 @@
+/**
+ * Author: Udit Gandhi
+ */
 import { cleanEnv, str, port } from "envalid";
 
 export default function validateEnv(): void {

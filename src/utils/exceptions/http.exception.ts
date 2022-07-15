@@ -1,3 +1,6 @@
+/**
+ * Author: Udit Gandhi
+ */
 //Error type specific to http exception.
 export default class HttpException extends Error {
   public status: number;

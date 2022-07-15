@@ -1,3 +1,6 @@
+/**
+ * Author: Udit Gandhi
+ */
 import mongoose from "mongoose";
 
 type TInput = {
