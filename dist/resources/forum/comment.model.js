@@ -1,7 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 const CommentSchema = new mongoose_1.Schema({
     userID: { type: String, required: true },
     symbol: { type: String, required: true },

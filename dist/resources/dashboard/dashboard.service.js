@@ -15,13 +15,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Author: Dharmik Hiteshkumar Soni
+ * BannerID: B00867641
+ * Email: dh657288@dal.ca
+ */
 const stock_model_1 = __importDefault(require("./stock.model"));
 const favorite_model_1 = __importDefault(require("./favorite.model"));
 const users_model_1 = __importDefault(require("../profile/users.model"));
 const console_1 = __importDefault(require("console"));
 /**
  * Service class
- * methods to provide all stocks to the controller
+ * methods to provide all  recommended and favorite stocks to the controller
  */
 class DashboardService {
     constructor() {

@@ -1,9 +1,12 @@
 /**
  * Author: Udit Gandhi
+ * BannerID: B00889579
+ * Email: udit.gandhi@dal.ca
  */
 import { Schema, model } from "mongoose";
 import Order from "./order.interface";
 
+//Creates a schema for Order collection.
 const OrderSchema = new Schema(
   {
     userID: { type: String, required: true },

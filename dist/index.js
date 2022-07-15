@@ -21,6 +21,10 @@ const analytics_controller_3 = __importDefault(require("./resources/stockfinanci
 const advisor_controller_1 = __importDefault(require("./resources/advisor/advisor.controller"));
 const appointment_controller_1 = __importDefault(require("./resources/appointmen/appointment.controller"));
 const { PORT, MONGODB_URL } = require("./config/config");
+const news_controller_1 = __importDefault(require("./resources/news/news.controller"));
+/**
+ * new DashboardController() is responsible to trigger all dashboard apis/endpoints
+ */
 (0, validateEnv_1.default)();
 const app = new app_1.default([
     new dashboard_controller_1.default(),
@@ -33,5 +37,6 @@ const app = new app_1.default([
     new analytics_controller_3.default(),
     new advisor_controller_1.default(),
     new appointment_controller_1.default(),
+    new news_controller_1.default(),
 ], Number(PORT), MONGODB_URL);
 app.listen();

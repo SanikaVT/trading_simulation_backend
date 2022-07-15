@@ -1,5 +1,11 @@
 "use strict";
+/**
+ * Author: Dharmik Hiteshkumar Soni
+ * BannerID: B00867641
+ * Email: dh657288@dal.ca
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
+//stock schema
 const mongoose_1 = require("mongoose");
 const StockSchema = new mongoose_1.Schema({
     id: { type: String, required: true },

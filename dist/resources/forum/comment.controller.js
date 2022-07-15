@@ -16,7 +16,11 @@ const express_1 = require("express");
 const comment_service_1 = __importDefault(require("../forum/comment.service"));
 const comment_model_1 = __importDefault(require("../forum/comment.model"));
 const rn = require("random-number");
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+*/
 class CommentController {
     constructor() {
         this.path = "/forum";

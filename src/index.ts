@@ -1,5 +1,7 @@
 /**
  * Author: Udit Gandhi
+ * BannerID: B00889579
+ * Email: udit.gandhi@dal.ca
  */
 import "dotenv/config";
 import "module-alias/register";
@@ -19,7 +21,7 @@ const { PORT, MONGODB_URL } = require("./config/config");
 import NewsController from "./resources/news/news.controller";
 
 /**
- * new DashboardController() is responsible to trigger all dashboard apis/endpoints
+ * Creats an application object where all the controllers are intialized and inserted into the application object.
  */
 
 validateEnv();

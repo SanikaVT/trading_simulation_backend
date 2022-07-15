@@ -12,6 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Author: Sampada Thakkar
+ * BannerID: B00893022
+ * Email: sm223034@dal.ca
+ */
 const express_1 = require("express");
 const analytics_service_1 = __importDefault(require("./analytics.service"));
 class HalfYearlyAnalyticsController {
@@ -19,6 +24,7 @@ class HalfYearlyAnalyticsController {
         this.path = "/halfyearlyanalytics";
         this.router = (0, express_1.Router)();
         this.AnalyticsService = new analytics_service_1.default();
+        //getting half yearly analytics
         this.getAnalytics = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const uID = req.query.Symbol;
@@ -28,7 +34,6 @@ class HalfYearlyAnalyticsController {
             }
             catch (error) {
                 console.log(error.message);
-                //next(new HttpException(400, error.message));
             }
         });
         this.initialiseRoutes();

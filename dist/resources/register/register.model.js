@@ -1,5 +1,11 @@
 "use strict";
+/**
+ * Author: Dharmay Dineshchandra Sureja
+ * BannerID: B00904061
+ * Email: dh276903@dal.ca
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
+// register model responsible for communicating data with mongodb
 const mongoose_1 = require("mongoose");
 const RegisterSchema = new mongoose_1.Schema({
     userID: { type: String, required: true },

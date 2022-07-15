@@ -49,9 +49,10 @@ class OrderService {
                 const orders = yield this.order.find({
                     userID: userId,
                     symbol: symbol,
-                    status: "Placed",
                 });
-                return orders === null || orders === void 0 ? void 0 : orders.length;
+                const count = orders.filter((order) => order.status === "Placed").length -
+                    orders.filter((order) => order.status === "Executed").length;
+                return count;
             }
             catch (err) {
                 throw new Error("Unable to get orders.");

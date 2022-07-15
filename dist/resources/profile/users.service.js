@@ -13,11 +13,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const users_model_1 = __importDefault(require("./users.model"));
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
+//Contains main logic which deals with MongoDB CRUD operations using Mongoose.
 class ProfileService {
     constructor() {
         this.users = users_model_1.default;
     }
+    //update profile using findOneAndUpdate method of Mongoose
     updateProfile(users) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -34,6 +40,7 @@ class ProfileService {
             }
         });
     }
+    //get profile using findOne method of Mongoose
     getProfileById(userID) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -50,6 +57,7 @@ class ProfileService {
     /**
      * Author: Udit Gandhi
      */
+    //update user credits using findOneAndUpdate method of Mongoose
     updateUserCredits(userID, credits) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -67,6 +75,7 @@ class ProfileService {
     /**
      * Author: Udit Gandhi
      */
+    //get user credits using findOne method of Mongoose
     getUserCredits(userID) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

@@ -1,9 +1,14 @@
 /**
  * Author: Udit Gandhi
+ * BannerID: B00889579
+ * Email: udit.gandhi@dal.ca
  */
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import Joi from "joi";
 
+/**
+ * Validation middleware for handling validations.
+ */
 export default function validationMiddleware(
   schema: Joi.Schema
 ): RequestHandler {

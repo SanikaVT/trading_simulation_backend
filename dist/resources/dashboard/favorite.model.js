@@ -1,4 +1,5 @@
 "use strict";
+//defining model and schema for favorite stocks
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongodb_1 = require("mongodb");
 const mongoose_1 = require("mongoose");

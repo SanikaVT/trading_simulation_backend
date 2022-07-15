@@ -1,4 +1,9 @@
 "use strict";
+/**
+ * Author: Dharmay Dineshchandra Sureja
+ * BannerID: B00904061
+ * Email: dh276903@dal.ca
+ */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -12,14 +17,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// register controller responsible for routing api calls and handeling backend logic
 const express_1 = require("express");
 const register_service_1 = __importDefault(require("../../resources/register/register.service"));
 const register_model_1 = __importDefault(require("../register/register.model"));
 const rn = require("random-number");
-// const { v4: uuidv4 } = require('uuid');
-// import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-// import * as firebase from 'firebase';
-// import 'firebase/firestore';
 class RegisterController {
     constructor() {
         this.path = "/register";
@@ -29,7 +31,6 @@ class RegisterController {
             try {
                 const { first_name, last_name, email, password, phone, address, account, risk_appetite } = req.body;
                 const register = new register_model_1.default();
-                // register.userID = "uuidv4()";
                 const options = {
                     min: 12345,
                     max: 20000,
@@ -46,7 +47,6 @@ class RegisterController {
                 register.account = account;
                 register.risk_appetite = risk_appetite;
                 const checkexists = yield this.RegisterService.getRegisters(email);
-                // console.log(checkexists);
                 if (checkexists === null) {
                     console.log("Creating user");
                     const createRegister = yield this.RegisterService.create(register);
@@ -57,13 +57,11 @@ class RegisterController {
                     res.sendStatus(409);
                     res.send("user already exists");
                 }
-                // console.log("ERROR BROTHER");
             }
             catch (error) {
                 console.log(error.message);
                 console.log("ERROR BROTHER");
                 res.sendStatus(400);
-                //next(new HttpException(400, error.message));
             }
         });
         this.getRegisters = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
@@ -74,7 +72,6 @@ class RegisterController {
             }
             catch (error) {
                 console.log(error.message);
-                //next(new HttpException(400, error.message));
             }
         });
         this.login = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
@@ -89,14 +86,11 @@ class RegisterController {
                 else {
                     res.status(200);
                     res.send(checklogin);
-                    // res.sendStatus(200);
                 }
-                // res.send({ register });
             }
             catch (error) {
                 console.log(error.message);
                 res.sendStatus(409);
-                //next(new HttpException(400, error.message));
             }
         });
         this.resetpassword = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
@@ -105,34 +99,14 @@ class RegisterController {
                 const password = req.body.password;
                 const resetpassword = yield this.RegisterService.resetpassword(email, password);
                 res.sendStatus(200);
-                // res.send({ register });
             }
             catch (error) {
                 console.log(error.message);
                 res.sendStatus(409);
-                //next(new HttpException(400, error.message));
             }
         });
         this.sendEmail = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                //   const firebaseConfig = {
-                //     apiKey: "AIzaSyBpxppQwhUYdfzsjNdpr5V32cAHWK8lLM0",
-                //     authDomain: "dtrade-a7fcd.firebaseapp.com",
-                //     projectId: "dtrade-a7fcd",
-                //     storageBucket: "dtrade-a7fcd.appspot.com",
-                //     messagingSenderId: "166579257653",
-                //     appId: "1:166579257653:web:1bf8c358672a3c5f744c7c"
-                //   };
-                //   const app = initializeApp(firebaseConfig);
-                //  // const db = getFirestore(app);
-                // var db = firebase.firestore(app);
-                //   const docRef = db.collection('users').doc('alovelace');
-                //
-                //   await docRef.set({
-                //     first: 'Ada',
-                //     last: 'Lovelace',
-                //     born: 1815
-                //   });
                 const email = req.body.email;
                 console.log("EMAIL IS HEREEEEE ", email);
                 var otp = Math.floor(1000 + Math.random() * 9000);
@@ -173,39 +147,10 @@ class RegisterController {
                     error ? console.log(error) : console.log(response);
                     smtpTransport.close();
                 });
-                // var transporter = nodemailer.createTransport({
-                //   service: 'gmail',
-                //   auth: {
-                //     type: "OAuth2",
-                //     user: 'dtradeapp.noreply@gmail.com',
-                //     clientId: "903649748216-nip97jq7tbiins9a9onte13lmm18c3pp.apps.googleusercontent.com",
-                //     clientSecret: "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",
-                //     refreshToken: "1//04-pDfpXPchuMCgYIARAAGAQSNwF-L9IrFSyGSMbDxXA16uCR3LKjBu76MBwBDLnFpBFHLSR5cTM7tT6XSXf9sjJL3fZ9QZxI64c"
-                //     // pass: 'DTradeDal'
-                //   }
-                // });
-                //
-                // var mailOptions = {
-                //   from: 'dtradeapp.noreply@gmail.com',
-                //   to: email,
-                //   subject: 'Sending Email using Node.js',
-                //   text: 'That was easy!'
-                // };
-                //
-                // transporter.sendMail(mailOptions, function(error: any, info: { response: string; }){
-                //   if (error) {
-                //     console.log(error);
-                //   } else {
-                //     console.log('Email sent: ' + info.response);
-                //   }
-                // });
-                // const register = await this.RegisterService.getRegisters(email);
-                // res.send({ register });
                 res.send({ otp });
             }
             catch (error) {
                 console.log(error.message);
-                //next(new HttpException(400, error.message));
             }
         });
         this.initialiseRoutes();

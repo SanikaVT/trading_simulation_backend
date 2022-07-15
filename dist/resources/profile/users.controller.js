@@ -15,12 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const users_service_1 = __importDefault(require("./users.service"));
 const users_model_1 = __importDefault(require("./users.model"));
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 class ProfileController {
     constructor() {
         this.path = "/users";
         this.router = (0, express_1.Router)();
         this.ProfileService = new users_service_1.default();
+        //takas user information that needs to be updated and passes it to service 
         this.update = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const { userID, account, risk_appetite, address, credits } = req.body;
@@ -39,6 +44,7 @@ class ProfileController {
                 //next(new HttpException(400, error.message));
             }
         });
+        //takes userID as a query param, passes it to service and return profile information
         this.getProfile = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const uID = req.query.userID;
@@ -51,9 +57,7 @@ class ProfileController {
                 //next(new HttpException(400, error.message));
             }
         });
-        /**
-         * Author: Udit Gandhi
-         */
+        //Get user credits by userID from service
         this.getUserCredits = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const userId = req.query.userID;

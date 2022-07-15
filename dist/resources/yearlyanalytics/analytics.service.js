@@ -12,9 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Author: Sampada Thakkar
+ * BannerID: B00893022
+ * Email: sm223034@dal.ca
+ */
 const yearly_analytics_model_1 = __importDefault(require("./yearly_analytics.model"));
 class AnalyticsService {
     constructor() {
+        //Getting the yearly analytics data
         this.yearlyanalytics = yearly_analytics_model_1.default;
     }
     getAnalytics(symbol) {

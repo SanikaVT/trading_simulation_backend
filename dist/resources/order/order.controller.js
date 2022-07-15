@@ -49,10 +49,20 @@ class OrderController {
                 if (createdOrder) {
                     const orderAmount = quantity * price;
                     const profileService = new users_service_1.default();
-                    if (currentMargin - orderAmount < 0) {
-                        order.status = "Cancelled";
+                    let updatedMargin = 0;
+                    if (orderType === "Buy") {
+                        if (currentMargin - orderAmount < 0) {
+                            order.status = "Cancelled";
+                            updatedMargin = currentMargin;
+                        }
+                        else {
+                            updatedMargin = currentMargin - orderAmount;
+                        }
                     }
-                    const user = yield profileService.updateUserCredits(userId, currentMargin - orderAmount);
+                    else {
+                        updatedMargin = currentMargin + orderAmount;
+                    }
+                    const user = yield profileService.updateUserCredits(userId, updatedMargin);
                     console.log(user);
                 }
                 else {

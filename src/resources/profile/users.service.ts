@@ -42,8 +42,11 @@ export default class ProfileService {
 
   /**
    * Author: Udit Gandhi
+   * BannerID: B00889579
+   * Email: udit.gandhi@dal.ca
+   *
+   * Update user credits using findOneAndUpdate method of Mongoose
    */
-  //update user credits using findOneAndUpdate method of Mongoose
   public async updateUserCredits(
     userID: string,
     credits: number
@@ -64,8 +67,11 @@ export default class ProfileService {
 
   /**
    * Author: Udit Gandhi
+   * BannerID: B00889579
+   * Email: udit.gandhi@dal.ca
+   *
+   * Get user credits using findOne method of Mongoose
    */
-  //get user credits using findOne method of Mongoose
   public async getUserCredits(userID: any): Promise<any> {
     try {
       const user = await this.users.findOne({ userID: userID });

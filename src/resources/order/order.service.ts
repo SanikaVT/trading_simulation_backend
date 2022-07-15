@@ -1,12 +1,16 @@
 /**
  * Author: Udit Gandhi
+ * BannerID: B00889579
+ * Email: udit.gandhi@dal.ca
  */
 import OrderModel from "../order/order.model";
 import Order from "../order/order.interface";
 
+//Contains business logic that interacts with MongoDB using Mongoose.
 export default class OrderService {
   private order = OrderModel;
 
+  //Creates an order document inside orders collection
   public async create(order: Order): Promise<Order> {
     try {
       const createdOrder = await this.order.create(order);
@@ -17,6 +21,7 @@ export default class OrderService {
     }
   }
 
+  //Fetches all the orders from the collection
   public async getOrders(): Promise<Order[]> {
     try {
       const orders = await this.order.find();
@@ -26,6 +31,7 @@ export default class OrderService {
     }
   }
 
+  //Gets all the stocks for a symbol and user id and then finds the count of the stocks that are in placed state i.e bought difference the executed state i.e. sold.
   public async getStockCount(userId: any, symbol: any): Promise<Number> {
     try {
       const orders = await this.order.find({

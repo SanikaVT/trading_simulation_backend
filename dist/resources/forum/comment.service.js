@@ -13,7 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const comment_model_1 = __importDefault(require("../forum/comment.model"));
-//Author: Sanika Tamhankar B00909848
+/**
+ * Author: Sanika Tamhankar
+ * BannerID: B00909848
+ * Email: sn295037@dal.ca
+ */
 class CommentService {
     constructor() {
         this.comment = comment_model_1.default;
