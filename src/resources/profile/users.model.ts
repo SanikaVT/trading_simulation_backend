@@ -6,6 +6,8 @@ import Users from "./users.interface";
  * BannerID: B00909848
  * Email: sn295037@dal.ca
  */
+
+//User Schema
 const UsersSchema = new Schema(
   {
     userID: { type: String, required: true },
