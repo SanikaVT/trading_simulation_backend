@@ -2,6 +2,14 @@
  * Data Model interfaces
  */
 
+
+/**
+ * Author: Dharmik Hiteshkumar Soni
+ * BannerID: B00867641
+ * Email: dh657288@dal.ca
+ */
+
+
 import stockModel from "./stock.model";
 import favoriteModel from "./favorite.model";
 import usersModel from "../profile/users.model";
@@ -12,7 +20,7 @@ import stockInterface from "./stock.interface";
 
 /**
  * Service class
- * methods to provide all stocks to the controller
+ * methods to provide all  recommended and favorite stocks to the controller
  */
 
 export default class DashboardService {

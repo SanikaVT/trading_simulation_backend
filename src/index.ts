@@ -13,6 +13,10 @@ import HalfYearlyAnalyticsController from "./resources/halfyearlyanalytics/analy
 import StockFinancialsController from "./resources/stockfinancials/analytics.controller";
 const { PORT, MONGODB_URL } = require("./config/config");
 
+/**
+ * new DashboardController() is responsible to trigger all dashboard apis/endpoints
+ */
+
 validateEnv();
 const app = new App(
   [new PostController(), new OrderController(), new DashboardController(),

@@ -1,3 +1,12 @@
+/**
+ * Author: Dharmay Dineshchandra Sureja
+ * BannerID: B00904061
+ * Email: dh276903@dal.ca
+ */
+
+// register services responsible to handle businesslogic
+
+
 import RegisterModel from "../register/register.model";
 import Register from "../register/register.interface";
 

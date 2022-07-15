@@ -1,3 +1,8 @@
+/**
+ * Author: Sampada Thakkar
+ * BannerID: B00893022
+ * Email: sm223034@dal.ca
+ */
 import { Schema, model } from "mongoose";
 import Analytics from "./analytics.interface";
 

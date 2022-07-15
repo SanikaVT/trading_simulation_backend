@@ -1,14 +1,18 @@
+/**
+ * Author: Dharmay Dineshchandra Sureja
+ * BannerID: B00904061
+ * Email: dh276903@dal.ca
+ */
+
+// register controller responsible for routing api calls and handeling backend logic
+
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
 import HttpException from "../../utils/exceptions/http.exception";
 import RegisterService from "../../resources/register/register.service";
 import RegisterModel from "../register/register.model";
 const rn = require("random-number");
-// const { v4: uuidv4 } = require('uuid');
 
-// import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-// import * as firebase from 'firebase';
-// import 'firebase/firestore';
 export default class RegisterController implements Controller {
   public path = "/register";
   public router = Router();
@@ -36,7 +40,7 @@ export default class RegisterController implements Controller {
       const { first_name, last_name, email, password, phone, address, account, risk_appetite  } = req.body;
 
       const register = new RegisterModel();
-      // register.userID = "uuidv4()";
+      
       const options = {
         min: 12345,
         max: 20000,
@@ -53,7 +57,7 @@ export default class RegisterController implements Controller {
       register.account = account;
       register.risk_appetite = risk_appetite;
       const checkexists = await  this.RegisterService.getRegisters(email);
-     // console.log(checkexists);
+    
       if (checkexists === null){
         console.log("Creating user");
         const createRegister = await this.RegisterService.create(register);
@@ -66,13 +70,12 @@ export default class RegisterController implements Controller {
       }
 
 
-// console.log("ERROR BROTHER");
 
     } catch (error: any) {
       console.log(error.message);
       console.log("ERROR BROTHER");
       res.sendStatus(400);
-      //next(new HttpException(400, error.message));
+      
     }
   };
 
@@ -87,7 +90,7 @@ export default class RegisterController implements Controller {
       res.send({ register });
     } catch (error: any) {
       console.log(error.message);
-      //next(new HttpException(400, error.message));
+     
     }
   };
 
@@ -107,15 +110,15 @@ export default class RegisterController implements Controller {
       else{
         res.status(200);
         res.send(checklogin);
-        // res.sendStatus(200);
+        
       }
-      // res.send({ register });
+     
 
 
     } catch (error: any) {
       console.log(error.message);
       res.sendStatus(409);
-      //next(new HttpException(400, error.message));
+      
     }
   };
 
@@ -129,12 +132,12 @@ export default class RegisterController implements Controller {
       const password=req.body.password;
       const resetpassword = await this.RegisterService.resetpassword(email,password);
       res.sendStatus(200);
-      // res.send({ register });
+     
 
     } catch (error: any) {
       console.log(error.message);
       res.sendStatus(409);
-      //next(new HttpException(400, error.message));
+     
     }
   };
 
@@ -147,25 +150,7 @@ export default class RegisterController implements Controller {
       next: NextFunction
   ): Promise<Response | void> => {
     try {
-    //   const firebaseConfig = {
-    //     apiKey: "AIzaSyBpxppQwhUYdfzsjNdpr5V32cAHWK8lLM0",
-    //     authDomain: "dtrade-a7fcd.firebaseapp.com",
-    //     projectId: "dtrade-a7fcd",
-    //     storageBucket: "dtrade-a7fcd.appspot.com",
-    //     messagingSenderId: "166579257653",
-    //     appId: "1:166579257653:web:1bf8c358672a3c5f744c7c"
-    //   };
-    //   const app = initializeApp(firebaseConfig);
-    //  // const db = getFirestore(app);
-    // var db = firebase.firestore(app);
-    //   const docRef = db.collection('users').doc('alovelace');
-    //
-    //   await docRef.set({
-    //     first: 'Ada',
-    //     last: 'Lovelace',
-    //     born: 1815
-    //   });
-
+    
 
       const email=req.body.email;
       console.log("EMAIL IS HEREEEEE ",email);
@@ -210,39 +195,10 @@ export default class RegisterController implements Controller {
         smtpTransport.close();
       });
 
-      // var transporter = nodemailer.createTransport({
-      //   service: 'gmail',
-      //   auth: {
-      //     type: "OAuth2",
-      //     user: 'dtradeapp.noreply@gmail.com',
-      //     clientId: "903649748216-nip97jq7tbiins9a9onte13lmm18c3pp.apps.googleusercontent.com",
-      //     clientSecret: "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",
-      //     refreshToken: "1//04-pDfpXPchuMCgYIARAAGAQSNwF-L9IrFSyGSMbDxXA16uCR3LKjBu76MBwBDLnFpBFHLSR5cTM7tT6XSXf9sjJL3fZ9QZxI64c"
-      //     // pass: 'DTradeDal'
-      //   }
-      // });
-      //
-      // var mailOptions = {
-      //   from: 'dtradeapp.noreply@gmail.com',
-      //   to: email,
-      //   subject: 'Sending Email using Node.js',
-      //   text: 'That was easy!'
-      // };
-      //
-      // transporter.sendMail(mailOptions, function(error: any, info: { response: string; }){
-      //   if (error) {
-      //     console.log(error);
-      //   } else {
-      //     console.log('Email sent: ' + info.response);
-      //   }
-      // });
-
-      // const register = await this.RegisterService.getRegisters(email);
-      // res.send({ register });
       res.send({otp});
     } catch (error: any) {
       console.log(error.message);
-      //next(new HttpException(400, error.message));
+      
     }
   };
 }

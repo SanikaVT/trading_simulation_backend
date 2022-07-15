@@ -1,3 +1,12 @@
+
+/**
+ * Author: Dharmik Hiteshkumar Soni
+ * BannerID: B00867641
+ * Email: dh657288@dal.ca
+ */
+
+
+
 //Creating endpoints
 //Controllers will call services where all business logics will be performed
 import { Router, Request, Response, NextFunction } from "express";
@@ -13,6 +22,7 @@ export default class DashboardController implements Controller {
     this.initialiseRoutes();
   }
 
+  //initializing endpoints here
   private initialiseRoutes(): void {
     this.router.post(`${this.path}`, this.getRecommendedStocks);
     this.router.post(`${this.path}/favorite`, this.getFavoriteStocks);

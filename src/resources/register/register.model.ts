@@ -1,3 +1,11 @@
+/**
+ * Author: Dharmay Dineshchandra Sureja
+ * BannerID: B00904061
+ * Email: dh276903@dal.ca
+ */
+
+// register model responsible for communicating data with mongodb
+
 import { Schema, model } from "mongoose";
 import Register from "./register.interface";
 

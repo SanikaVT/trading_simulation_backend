@@ -1,8 +1,11 @@
+/**
+ * Author: Sampada Thakkar
+ * BannerID: B00893022
+ * Email: sm223034@dal.ca
+ */
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
-import HttpException from "../../utils/exceptions/http.exception";
 import AnalyticsService from "./analytics.service";
-import AnalyticsModel from "./yearly_analytics.model";
 
 export default class HalfYearlyAnalyticsController implements Controller {
   public path = "/halfyearlyanalytics";
@@ -15,7 +18,7 @@ export default class HalfYearlyAnalyticsController implements Controller {
   private initialiseRoutes(): void {
     this.router.get(`${this.path}`, this.getAnalytics);
   }
-
+  //getting half yearly analytics
   private getAnalytics = async (
     req: Request,
     res: Response,

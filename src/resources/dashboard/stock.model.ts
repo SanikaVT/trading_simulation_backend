@@ -1,3 +1,15 @@
+
+
+
+
+/**
+ * Author: Dharmik Hiteshkumar Soni
+ * BannerID: B00867641
+ * Email: dh657288@dal.ca
+ */
+
+//stock schema
+
 import { Schema, model } from "mongoose";
 import Stock from "./stock.interface";
 

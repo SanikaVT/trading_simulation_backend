@@ -1,8 +1,11 @@
+/**
+ * Author: Sampada Thakkar
+ * BannerID: B00893022
+ * Email: sm223034@dal.ca
+ */
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
-import HttpException from "../../utils/exceptions/http.exception";
 import AnalyticsService from "./analytics.service";
-import AnalyticsModel from "./yearly_analytics.model";
 
 export default class StockFinancialsController implements Controller {
   public path = "/financials";
@@ -17,6 +20,7 @@ export default class StockFinancialsController implements Controller {
   }
 
   private getAnalytics = async (
+    //getting financial data
     req: Request,
     res: Response,
   ): Promise<Response | void> => {
