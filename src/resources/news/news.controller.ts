@@ -1,10 +1,19 @@
+/**
+
+ * Author: Prakrut Suthar
+
+ * BannerID: B00885349
+
+ * Email:prakrut@dal.ca
+
+*/
+
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
 import NewsService from "../news/news.service";
 import NewsModel from "../news/news.model";
 const rn = require("random-number");
 
-//Author: Prakrut Suthar
 export default class CommentController implements Controller {
   public path = "/news";
   public router = Router();
