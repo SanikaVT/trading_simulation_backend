@@ -22,7 +22,7 @@ export default class RegisterController implements Controller {
   }
 
 
-
+// declare routes
   private initialiseRoutes(): void {
     this.router.post(`${this.path}`, this.create);
     this.router.get(`${this.path}`, this.getRegisters);
@@ -30,7 +30,7 @@ export default class RegisterController implements Controller {
     this.router.post(`${this.path}/login`, this.login);
     this.router.post(`${this.path}/forgotpassword`, this.resetpassword);
   }
-
+// register user logic
   private create = async (
     req: Request,
     res: Response,
@@ -79,6 +79,7 @@ export default class RegisterController implements Controller {
     }
   };
 
+// get registered users logic
   private getRegisters = async (
     req: Request,
     res: Response,
@@ -94,6 +95,7 @@ export default class RegisterController implements Controller {
     }
   };
 
+//check login logic
   private login = async (
       req: Request,
       res: Response,
@@ -122,6 +124,7 @@ export default class RegisterController implements Controller {
     }
   };
 
+//reset password logic
   private resetpassword = async (
       req: Request,
       res: Response,
@@ -143,7 +146,7 @@ export default class RegisterController implements Controller {
 
 
 
-
+//email send logic
   private sendEmail = async (
       req: Request,
       res: Response,
