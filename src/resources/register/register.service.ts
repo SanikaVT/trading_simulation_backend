@@ -13,6 +13,7 @@ import Register from "../register/register.interface";
 export default class RegisterService {
   private register = RegisterModel;
 
+//register user service
   public async create(register: Register): Promise<Register> {
     try {
       const createdRegisters = await this.register.create(register);
@@ -22,6 +23,7 @@ export default class RegisterService {
     }
   }
 
+//get registered user service
   public async getRegisters(email: any): Promise<any> {
     try {
       const registers = await this.register.findOne({ email: email });
@@ -30,6 +32,8 @@ export default class RegisterService {
       throw new Error("Unable to get register.");
     }
   }
+
+  //login service
   public async login(email: any, password: any): Promise<any> {
     try {
       const registers = await this.register.findOne({
@@ -42,6 +46,7 @@ export default class RegisterService {
     }
   }
 
+//reset password service
   public async resetpassword(email: any, password: any): Promise<any> {
     try {
       const prof = await this.register.findOneAndUpdate(
