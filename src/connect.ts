@@ -1,9 +1,17 @@
+/**
+ * Author: Udit Gandhi
+ * BannerID: B00889579
+ * Email: udit.gandhi@dal.ca
+ */
 import mongoose from "mongoose";
 
 type TInput = {
   url: string;
 };
 
+/**
+ * Helps to connect to the Mongo DB.
+ */
 export default ({ url }: TInput) => {
   const connect = () => {
     mongoose

@@ -26,7 +26,7 @@ function validationMiddleware(schema) {
             error.details.forEach((err) => {
                 errors.push(err.message);
             });
-            res.status(400).send(errors);
+            res.sendStatus(400).send(errors);
         }
     });
 }

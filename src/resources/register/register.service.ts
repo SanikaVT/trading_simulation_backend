@@ -1,6 +1,14 @@
+/**
+ * Author: Dharmay Dineshchandra Sureja
+ * BannerID: B00904061
+ * Email: dh276903@dal.ca
+ */
+
+// register services responsible to handle businesslogic
+
+
 import RegisterModel from "../register/register.model";
 import Register from "../register/register.interface";
-
 
 export default class RegisterService {
   private register = RegisterModel;
@@ -14,32 +22,36 @@ export default class RegisterService {
     }
   }
 
-  public async getRegisters(email:any): Promise<any> {
+  public async getRegisters(email: any): Promise<any> {
     try {
-      const registers = await this.register.findOne({email:email});
+      const registers = await this.register.findOne({ email: email });
       return registers;
     } catch (err) {
       throw new Error("Unable to get register.");
     }
   }
-  public async login(email:any, password:any): Promise<any> {
+  public async login(email: any, password: any): Promise<any> {
     try {
-      const registers = await this.register.findOne({email:email, password:password});
+      const registers = await this.register.findOne({
+        email: email,
+        password: password,
+      });
       return registers;
     } catch (err) {
       throw new Error("Unable to get register.");
     }
   }
 
-  public async resetpassword(email:any, password:any): Promise<any> {
+  public async resetpassword(email: any, password: any): Promise<any> {
     try {
-
-      const prof = await this.register.findOneAndUpdate({email:email}, {password:password});
+      const prof = await this.register.findOneAndUpdate(
+        { email: email },
+        { password: password }
+      );
       return prof;
-    } catch (err:any) {
+    } catch (err: any) {
       console.log(err.message);
       throw new Error("Unable to update profile.");
     }
   }
-
 }

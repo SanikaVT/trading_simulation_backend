@@ -12,6 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Author: Udit Gandhi
+ */
 const order_model_1 = __importDefault(require("../order/order.model"));
 class OrderService {
     constructor() {
@@ -24,7 +27,8 @@ class OrderService {
                 return createdOrder;
             }
             catch (err) {
-                throw new Error("Unable to create order.");
+                console.log(err);
+                throw new Error("Unable to create order." + err);
             }
         });
     }
@@ -33,6 +37,22 @@ class OrderService {
             try {
                 const orders = yield this.order.find();
                 return orders;
+            }
+            catch (err) {
+                throw new Error("Unable to get orders.");
+            }
+        });
+    }
+    getStockCount(userId, symbol) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const orders = yield this.order.find({
+                    userID: userId,
+                    symbol: symbol,
+                });
+                const count = orders.filter((order) => order.status === "Placed").length -
+                    orders.filter((order) => order.status === "Executed").length;
+                return count;
             }
             catch (err) {
                 throw new Error("Unable to get orders.");

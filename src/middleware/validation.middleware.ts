@@ -1,6 +1,14 @@
+/**
+ * Author: Udit Gandhi
+ * BannerID: B00889579
+ * Email: udit.gandhi@dal.ca
+ */
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import Joi from "joi";
 
+/**
+ * Validation middleware for handling validations.
+ */
 export default function validationMiddleware(
   schema: Joi.Schema
 ): RequestHandler {
@@ -23,7 +31,7 @@ export default function validationMiddleware(
       error.details.forEach((err: Joi.ValidationErrorItem) => {
         errors.push(err.message);
       });
-      res.status(400).send(errors);
+      res.sendStatus(400).send(errors);
     }
   };
 }

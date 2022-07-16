@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Author: Udit Gandhi
+ */
 const envalid_1 = require("envalid");
 function validateEnv() {
     (0, envalid_1.cleanEnv)(process.env, {

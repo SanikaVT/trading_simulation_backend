@@ -1,3 +1,11 @@
+/**
+ * Author: Dharmay Dineshchandra Sureja
+ * BannerID: B00904061
+ * Email: dh276903@dal.ca
+ */
+
+// register model responsible for communicating data with mongodb
+
 import { Schema, model } from "mongoose";
 import Register from "./register.interface";
 
@@ -11,9 +19,9 @@ const RegisterSchema = new Schema(
       phone: { type: Number, required: true },
     address: { type: String, required: true },
       credits: { type: Number, required: true },
-    creditCard: { type: Number, required: true },
+    account: { type: String, required: true },
     // timestamp: { type: Date, required: true },
-     riskappetite: { type: String, enum: ["Low", "Medium", "High"] },
+     risk_appetite: { type: String, enum: ["Low", "Medium", "High"] },
     // orderType: { type: String, enum: ["Buy", "Sell"] },
   },
   { timestamps: true }

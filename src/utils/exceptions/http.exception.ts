@@ -1,3 +1,8 @@
+/**
+ * Author: Udit Gandhi
+ * BannerID: B00889579
+ * Email: udit.gandhi@dal.ca
+ */
 //Error type specific to http exception.
 export default class HttpException extends Error {
   public status: number;

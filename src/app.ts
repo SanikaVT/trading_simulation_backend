@@ -1,11 +1,16 @@
+/**
+ * Author: Udit Gandhi
+ * BannerID: B00889579
+ * Email: udit.gandhi@dal.ca
+ */
 import express, { Application } from "express";
 import dotenv from "dotenv";
 import compression from "compression";
 import morgan from "morgan";
 import connect from "./connect";
 import Controller from "@/utils/interfaces/controller.interface";
-import ErrorMiddleware from "./middleware/error.middleware";
 import helmet from "helmet";
+import path from "path";
 const cors = require("cors");
 dotenv.config();
 
@@ -20,9 +25,12 @@ class App {
     this.initialiseDB();
     this.initialiseMiddleware();
     this.initialiseControllers(controllers);
-    this.initialiseErrorHandling();
+    this.express.get("/*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../build", "index.html"));
+    });
   }
 
+  // Intializes all the middlewares
   private initialiseMiddleware(): void {
     this.express.use(helmet());
     this.express.use(cors());
@@ -32,23 +40,23 @@ class App {
     // parse application/x-www-form-urlencoded
     this.express.use(express.urlencoded({ extended: false }));
     this.express.use(compression());
+    this.express.use(express.static(path.join(__dirname, "../build")));
   }
 
+  // Intializes all the constollers and insert /api before the route
   private initialiseControllers(controllers: Controller[]): void {
     controllers.forEach((controller: Controller) => {
       this.express.use("/api", controller.router);
     });
   }
 
-  private initialiseErrorHandling(): void {
-    this.express.use(ErrorMiddleware);
-  }
-
+  // Intializes the Mongo DB
   private initialiseDB(): void {
     const url: string = this.dbUrl;
     connect({ url });
   }
 
+  //Starts listening to the requests
   public listen(): void {
     this.express.listen(this.port, () => {
       console.log(`Express listening on port ${this.port}`);
