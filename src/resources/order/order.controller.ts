@@ -2,7 +2,7 @@
  * Author: Udit Gandhi
  * BannerID: B00889579
  * Email: udit.gandhi@dal.ca
-*/
+ */
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
 import OrderService from "../../resources/order/order.service";
@@ -31,8 +31,15 @@ export default class OrderController implements Controller {
     next: NextFunction
   ): Promise<Response | void> => {
     try {
-      const { userId, symbol, quantity, price, orderType, currentMargin } =
-        req.body;
+      const {
+        userId,
+        symbol,
+        quantity,
+        price,
+        orderType,
+        currentMargin,
+        mail,
+      } = req.body;
       const options = {
         min: 12345,
         max: 20000,
@@ -110,4 +117,109 @@ export default class OrderController implements Controller {
       res.sendStatus(500);
     }
   };
+}
+
+//to send cancel  order mmail
+function sendCancel(mail: any) {
+  try {
+    const email = mail;
+    console.log("EMAIL IS HEREEEEE ", email);
+
+    var nodemailer = require("nodemailer");
+    const { google } = require("googleapis");
+    const OAuth2 = google.auth.OAuth2;
+    const oauth2Client = new OAuth2(
+      "903649748216-72r7pi5aki217mqcmjn635ok9vskimj4.apps.googleusercontent.com", // ClientID
+      "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", // Client Secret
+      "https://developers.google.com/oauthplayground" // Redirect URL
+    );
+    oauth2Client.setCredentials({
+      refresh_token:
+        "1//04tOf2lQz1dd1CgYIARAAGAQSNwF-L9IrTj5OZ_HbeNBpE_K0uLjjiGBZJN-ZyQjxr1jAXI9uLjBuNi8_7-h64dEaU-ZbJIlbMQ4",
+    });
+    const accessToken = oauth2Client.getAccessToken();
+    const smtpTransport = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        type: "OAuth2",
+        user: "dtradeapp.noreply@gmail.com",
+        clientId:
+          "903649748216-72r7pi5aki217mqcmjn635ok9vskimj4.apps.googleusercontent.com",
+        clientSecret: "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",
+        refreshToken:
+          "1//04tOf2lQz1dd1CgYIARAAGAQSNwF-L9IrTj5OZ_HbeNBpE_K0uLjjiGBZJN-ZyQjxr1jAXI9uLjBuNi8_7-h64dEaU-ZbJIlbMQ4",
+        accessToken: accessToken,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+    const mailOptions = {
+      from: "dtradeapp.noreply@gmail.com",
+      to: email,
+      subject: "Order Status Updated",
+      generateTextFromHTML: true,
+      html:
+        "<b> Sorry, Your request for order was declined </b> /n" +
+        "<b> By <br/> Team DTrade </b>",
+    };
+    smtpTransport.sendMail(mailOptions, (error: any, response: any) => {
+      error ? console.log(error) : console.log(response);
+      smtpTransport.close();
+    });
+  } catch (error: any) {
+    console.log(error.message);
+  }
+}
+
+function sendApproval(mail: any) {
+  try {
+    const email = mail;
+    console.log("EMAIL IS HEREEEEE ", email);
+
+    var nodemailer = require("nodemailer");
+    const { google } = require("googleapis");
+    const OAuth2 = google.auth.OAuth2;
+    const oauth2Client = new OAuth2(
+      "903649748216-72r7pi5aki217mqcmjn635ok9vskimj4.apps.googleusercontent.com", // ClientID
+      "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", // Client Secret
+      "https://developers.google.com/oauthplayground" // Redirect URL
+    );
+    oauth2Client.setCredentials({
+      refresh_token:
+        "1//04tOf2lQz1dd1CgYIARAAGAQSNwF-L9IrTj5OZ_HbeNBpE_K0uLjjiGBZJN-ZyQjxr1jAXI9uLjBuNi8_7-h64dEaU-ZbJIlbMQ4",
+    });
+    const accessToken = oauth2Client.getAccessToken();
+    const smtpTransport = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        type: "OAuth2",
+        user: "dtradeapp.noreply@gmail.com",
+        clientId:
+          "903649748216-72r7pi5aki217mqcmjn635ok9vskimj4.apps.googleusercontent.com",
+        clientSecret: "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",
+        refreshToken:
+          "1//04tOf2lQz1dd1CgYIARAAGAQSNwF-L9IrTj5OZ_HbeNBpE_K0uLjjiGBZJN-ZyQjxr1jAXI9uLjBuNi8_7-h64dEaU-ZbJIlbMQ4",
+        accessToken: accessToken,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+    const mailOptions = {
+      from: "dtradeapp.noreply@gmail.com",
+      to: email,
+      subject: "Order Status Updated",
+      generateTextFromHTML: true,
+      html:
+        "<b> Congratulatios, You  have successfully made a purchase for an order </b> /n" +
+        "<b> By <br/> Team DTrade </b>",
+    };
+    smtpTransport.sendMail(mailOptions, (error: any, response: any) => {
+      error ? console.log(error) : console.log(response);
+      smtpTransport.close();
+    });
+  } catch (error: any) {
+    console.log(error.message);
+  }
 }
