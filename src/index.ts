@@ -19,6 +19,8 @@ import AdvisorController from "./resources/advisor/advisor.controller";
 import AppointmentController from "./resources/appointmen/appointment.controller";
 const { PORT, MONGODB_URL } = require("./config/config");
 import NewsController from "./resources/news/news.controller";
+import BlogsController from "./resources/blogs/blogs.controller";
+import CommentsController from "./resources/comments/comments.controller";
 
 /**
  * Creats an application object where all the controllers are intialized and inserted into the application object.
@@ -38,6 +40,8 @@ const app = new App(
     new AdvisorController(),
     new AppointmentController(),
     new NewsController(),
+      new BlogsController(),
+      new CommentsController(),
   ],
   Number(PORT),
   MONGODB_URL
