@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .vscode
+package-lock.json
 
 # testing
 /coverage

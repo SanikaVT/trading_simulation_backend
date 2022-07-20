@@ -1,11 +1,8 @@
-
 /**
  * Author: Dharmik Hiteshkumar Soni
  * BannerID: B00867641
  * Email: dh657288@dal.ca
  */
-
-
 
 //Creating endpoints
 //Controllers will call services where all business logics will be performed
