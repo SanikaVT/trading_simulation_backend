@@ -164,12 +164,12 @@ export default class RegisterController implements Controller {
       const { google } = require("googleapis");
       const OAuth2 = google.auth.OAuth2;
       const oauth2Client = new OAuth2(
-          "903649748216-72r7pi5aki217mqcmjn635ok9vskimj4.apps.googleusercontent.com", // ClientID
-      "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", // Client Secret
+          "903649748216-q12n618sjkm4dt1avsouf1d5vc4104nf.apps.googleusercontent.com", // ClientID
+      "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", // Client Secret
           "https://developers.google.com/oauthplayground" // Redirect URL
     );
       oauth2Client.setCredentials({
-        refresh_token: "1//04tOf2lQz1dd1CgYIARAAGAQSNwF-L9IrTj5OZ_HbeNBpE_K0uLjjiGBZJN-ZyQjxr1jAXI9uLjBuNi8_7-h64dEaU-ZbJIlbMQ4"
+        refresh_token: "1//0461TZAF54cGbCgYIARAAGAQSNwF-L9Iryc_C1hwYTIk7aOYF32AH2X244mCg1wKAMDYHLP5zrHXEKhBmmI4i7raIe9tTXvnXRMg"
       });
       const accessToken = oauth2Client.getAccessToken()
       const smtpTransport = nodemailer.createTransport({
@@ -177,9 +177,9 @@ export default class RegisterController implements Controller {
         auth: {
           type: "OAuth2",
           user: "dtradeapp.noreply@gmail.com",
-          clientId: "903649748216-72r7pi5aki217mqcmjn635ok9vskimj4.apps.googleusercontent.com",
-          clientSecret: "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",
-          refreshToken: "1//04tOf2lQz1dd1CgYIARAAGAQSNwF-L9IrTj5OZ_HbeNBpE_K0uLjjiGBZJN-ZyQjxr1jAXI9uLjBuNi8_7-h64dEaU-ZbJIlbMQ4",
+          clientId: "903649748216-q12n618sjkm4dt1avsouf1d5vc4104nf.apps.googleusercontent.com",
+          clientSecret: "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",
+          refreshToken: "1//0461TZAF54cGbCgYIARAAGAQSNwF-L9Iryc_C1hwYTIk7aOYF32AH2X244mCg1wKAMDYHLP5zrHXEKhBmmI4i7raIe9tTXvnXRMg",
           accessToken: accessToken
         },
         tls: {
