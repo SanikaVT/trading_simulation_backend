@@ -7,12 +7,14 @@
  * Email:dh276903@dal.ca
 
  */
+// blog services responsible to handle businesslogic
 import BlogsModel from "../blogs/blogs.model";
 import Blogs from "../blogs/blogs.interface";
 
 export default class BlogsService {
   private blogs = BlogsModel;
 
+// add blog
   public async addBlogs(blogs: Blogs): Promise<Blogs> {
     try {
       const create = await this.blogs.create(blogs);
@@ -22,7 +24,7 @@ export default class BlogsService {
       throw new Error("Unable to create a Blog.");
     }
   }
-
+//get blog list
   public async getBlogsList(): Promise<any> {
     try {
       const blogs = await this.blogs.find();
@@ -32,7 +34,7 @@ export default class BlogsService {
       throw new Error("Unable to get Blog.");
     }
   }
-
+//get details of a particular blog
   public async getDetails(blogsID: any): Promise<any> {
     try {
       const details = await this.blogs.findOne({ blogsID: blogsID });
@@ -43,7 +45,7 @@ export default class BlogsService {
     }
   }
 
-
+//update a particular blog
   public async updateBlogs(blogs:Blogs): Promise<any> {
     try {
       console.log(blogs);
@@ -56,7 +58,7 @@ export default class BlogsService {
     }
   }
 
-
+//like a blog
   public async addLike(blogsID:any, likes:any): Promise<any> {
     try {
       // console.log(blogs);
@@ -69,7 +71,7 @@ export default class BlogsService {
     }
   }
 
-
+//delete a blog
   public async deleteBlogs(blogsID:any): Promise<any> {
     try {
       console.log(blogsID);
