@@ -20,9 +20,9 @@ const RegisterSchema = new Schema(
     address: { type: String, required: true },
       credits: { type: Number, required: true },
     account: { type: String, required: true },
-    // timestamp: { type: Date, required: true },
+    
      risk_appetite: { type: String, enum: ["Low", "Medium", "High"] },
-    // orderType: { type: String, enum: ["Buy", "Sell"] },
+    
   },
   { timestamps: true }
 );
