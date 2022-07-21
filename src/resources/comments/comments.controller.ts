@@ -8,6 +8,8 @@
 
 */
 
+// comment controller responsible for routing api calls and handeling backend logic
+
 import { Router, Request, Response, NextFunction } from "express";
 import Controller from "../../utils/interfaces/controller.interface";
 import CommentsService from "../comments/comments.service";
@@ -23,13 +25,13 @@ export default class CommentsController implements Controller {
   }
 
   private initialiseRoutes(): void {
-
+//api end points
     this.router.post(`${this.path}`, this.getComments);
     this.router.put(`${this.path}`, this.addComments);
     this.router.post(`${this.path}/delete`, this.deleteComments);
 
   }
-
+//add comments to a blog
   private addComments = async (
     req: Request,
     res: Response,
@@ -48,17 +50,16 @@ export default class CommentsController implements Controller {
       comments.commentID = rn(options).toString();
       comments.comment=comment;
       comments.first_name=first_name;
-    // console.log("userid =",userID)
-    //   const prof = await this.CommentsService.getProfileById(userID);
+    
       const addBlogs = await this.CommentsService.addComments(comments);
-      // console.log("hellloww",prof);
+      
       res.sendStatus(201);
     } catch (error: any) {
       console.log("C"+error.message);
       res.sendStatus(400);
     }
   };
-
+// get comments related to a blog
   private getComments = async (
     req: Request,
     res: Response,
@@ -71,10 +72,10 @@ export default class CommentsController implements Controller {
     } catch (error: any) {
       console.log(error.message);
       res.send(400);
-      //next(new HttpException(400, error.message));
+      
     }
   };
-
+// delete comments
   private deleteComments = async (
     req: Request,
     res: Response,
@@ -89,7 +90,7 @@ export default class CommentsController implements Controller {
     } catch (error: any) {
       console.log(error.message);
       res.send(400);
-      //next(new HttpException(400, error.message));
+      
     }
   };
 }
