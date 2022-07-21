@@ -7,7 +7,7 @@
  * Email:dh276903@dal.ca
 
  */
-
+// Defined Interface maping
 import { Document } from "mongoose";
 
 export default interface Blogs extends Document {
