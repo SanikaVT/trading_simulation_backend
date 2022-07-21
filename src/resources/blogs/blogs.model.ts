@@ -7,6 +7,8 @@
  * Email:dh276903@dal.ca
 
  */
+// blog model responsible for communicating data with mongodb
+
 
 import { Schema, model } from "mongoose";
 import Blogs from "./blogs.interface";
