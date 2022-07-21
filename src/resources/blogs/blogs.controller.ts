@@ -24,7 +24,7 @@ export default class BlogsController implements Controller {
 
   private initialiseRoutes(): void {
 
-    // this.router.post(`${this.path}`, this.addBlogs);
+    //initialise all api endpoints
     this.router.post(`${this.path}`, this.updateBlogs);
     this.router.get(`${this.path}`, this.getBlogsList);
     this.router.post(`${this.path}/details`, this.getDetails);
@@ -33,7 +33,7 @@ export default class BlogsController implements Controller {
     this.router.post(`${this.path}/like`, this.likeBlogs);
 
   }
-
+// to add blog to database
   private addBlogs = async (
     req: Request,
     res: Response,
@@ -61,6 +61,7 @@ export default class BlogsController implements Controller {
     }
   };
 
+//get all blogs
   private getBlogsList = async (
     req: Request,
     res: Response,
@@ -74,6 +75,8 @@ export default class BlogsController implements Controller {
       //next(new HttpException(400, error.message));
     }
   };
+
+  //get details of a blog
   private getDetails = async (
     req: Request,
     res: Response,
@@ -90,6 +93,7 @@ export default class BlogsController implements Controller {
     }
   };
 
+//like a log
   private likeBlogs = async (
       req: Request,
       res: Response,
@@ -105,11 +109,11 @@ export default class BlogsController implements Controller {
        res.send({ blogs: blogs });
     } catch (error: any) {
       console.log(error.message);
-      //next(new HttpException(400, error.message));
+      
     }
   };
 
-
+//update a blog
   private updateBlogs = async (
     req: Request,
     res: Response,
@@ -131,6 +135,7 @@ export default class BlogsController implements Controller {
     }
   };
 
+//delete a blog
   private deleteBlogs = async (
     req: Request,
     res: Response,
@@ -139,12 +144,12 @@ export default class BlogsController implements Controller {
     try {
       const { blogsID} = req.body;
       console.log("blogs id are here",blogsID);
-      // console.log(req.query.userID);
+      
       const blogs = await this.BlogsService.deleteBlogs(blogsID);
       res.send({ blogs });
     } catch (error: any) {
       console.log(error.message);
-      //next(new HttpException(400, error.message));
+     
     }
   };
 }
